@@ -1,8 +1,22 @@
-<h2>Hi <%=@user.first_name %> </h2>
+<div id="user_nav">
+  <% if current_user %>
+    Signed in as <strong><%= current_user.first_name %></strong>!
+    <%= link_to "Sign out", signout_path, id: "sign_out" %>
+  <% else %>
+    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+  <% end %>
+</div>
 
-<h4>These are your books</h4> 
+<% if @user == current_user %>
+  <h4>These are your books.</h4>
+<% else %>
+  <h4>These are <%=@user.first_name %>'s books</h4> 
+<% end %>
+
 <h5><%= link_to "[add more]", new_book_path %></h5>
 
 <% @user.books.each do |book| %>
+  <a href='<%= book.amazon_link %>'>
     <img src='<%= book.cover_image_link %>'>
+  </a>
 <% end %>

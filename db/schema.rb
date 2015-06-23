@@ -11,14 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150623195336) do
+ActiveRecord::Schema.define(version: 20150623204054) do
 
   create_table "books", force: :cascade do |t|
-    t.string "title"
-    t.string "authors"
-    t.string "amazon_link"
-    t.string "asin"
-    t.string "cover_image_link"
+    t.string   "title"
+    t.string   "authors"
+    t.string   "amazon_link"
+    t.string   "asin"
+    t.string   "cover_image_link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "user_books", force: :cascade do |t|
@@ -28,14 +30,16 @@ ActiveRecord::Schema.define(version: 20150623195336) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string  "first_name"
-    t.string  "last_name"
-    t.string  "email"
-    t.string  "image"
-    t.string  "uid"
-    t.string  "provider"
-    t.string  "token"
-    t.integer "expires_at"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "image"
+    t.string   "uid"
+    t.string   "provider"
+    t.string   "token"
+    t.datetime "expires_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

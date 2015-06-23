@@ -6,6 +6,12 @@ gem 'amazon-ecs'
 gem 'nokogiri', '~> 1.4'
 gem 'ruby-hmac', '~> 0.3'
 
+# OmniAuth for FB Login
+gem 'omniauth-facebook'
+
+# Bootstrap for looks
+gem 'bootstrap-sass', '~> 3.3.5'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'

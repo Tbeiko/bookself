@@ -19,10 +19,13 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.new(book_params)
+    @book = Book.find_by(amazon_link: params[:book][:amazon_link]) 
+    if @book == nil
+      @book = Book.new(book_params)
+    end
     
     # Will need to update this when we'll have more users
-    @book.users << User.find_by(id: 1)
+    @book.users << current_user
 
     if @book.save
       redirect_to root_path
