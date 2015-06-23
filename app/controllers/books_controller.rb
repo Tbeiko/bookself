@@ -5,9 +5,6 @@ class BooksController < ApplicationController
   end
 
   def search
-    # Google Books API
-    # @books = GoogleBooks::API.search(params[:book_info], :count => 9)
-
     # Amazon API
     search_term = params[:book_info]
     @books  = Amazon::Ecs.item_search(search_term, { :search_index => 'Books', :sort => 'relevancerank' })
@@ -37,6 +34,6 @@ class BooksController < ApplicationController
   private
 
     def book_params
-      params.require(:book).permit(:title, :authors, :publication_date, :isbn, :isbn_10, :description, :cover_image_link)
+      params.require(:book).permit(:title, :authors, :amazon_link, :asin, :cover_image_link)
     end
 end
