@@ -1,7 +1,10 @@
 source 'https://rubygems.org'
 
-# Google Books Gem to access API
+# Google Books & Amazon Gem to access API
 gem 'google_books'
+gem 'amazon-ecs'
+gem 'nokogiri', '~> 1.4'
+gem 'ruby-hmac', '~> 0.3'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -34,6 +37,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+gem 'figaro'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

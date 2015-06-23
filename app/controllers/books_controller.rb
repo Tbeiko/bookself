@@ -5,7 +5,15 @@ class BooksController < ApplicationController
   end
 
   def search
-    @books = GoogleBooks::API.search(params[:book_info], :count => 9)
+    # Google Books API
+    # @books = GoogleBooks::API.search(params[:book_info], :count => 9)
+
+    # Amazon API
+    search_term = params[:book_info]
+    @books  = Amazon::Ecs.item_search(search_term, { :search_index => 'Books', :sort => 'relevancerank' })
+    @covers = Amazon::Ecs.item_search(search_term, { :response_group => 'Images',
+                                                     :search_index => 'Books',
+                                                     :sort => 'relevancerank' })
     render :new
   end
 
