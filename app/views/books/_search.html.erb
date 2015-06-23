@@ -1,0 +1,8 @@
+<h2>Search for your book</h2>
+
+<form action="/search" method="POST">
+  <%= token_tag %>
+  Book information:<br>
+  <input type="text" name="book_info">
+  <input type="submit" value="Submit">
+</form>

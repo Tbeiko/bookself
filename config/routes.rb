@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
   root 'users#show'
+
+  resources :books, except: [:edit]
+  
+  get '/search', to: 'books#search'
+  post '/search', to: 'books#search'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

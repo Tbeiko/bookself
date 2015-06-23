@@ -1,0 +1,20 @@
+<%= render 'books/search' %>
+<% if @books %>
+<h3>Choose your book </h3>
+
+  <% @books.each do |book| %>
+    <% unless book.covers[:small] == nil %>
+      <%= form_for @book do |f| %>
+        <input name="book[title]" type="hidden" value="<%= book.title %>"/>
+        <input name="book[authors]" type="hidden" value="<%= book.authors[0] %>"/>
+        <input name="book[publication_date]" type="hidden" value="<%= book.published_date %>"/>
+        <input name="book[isbn]" type="hidden" value="<%= book.isbn %>"/>
+        <input name="book[isbn_10]" type="hidden" value="<%= book.isbn_10 %>"/>
+        <input name="book[description]" type="hidden" value="<%= book.description %>"/>
+        <input name="book[cover_image_link]" type="hidden" value="<%= book.covers[:small] %>"/>
+        <%= image_submit_tag(book.covers[:small]) %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+<% end %>

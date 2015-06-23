@@ -1,9 +1,8 @@
 <h2>Hi <%=@user.first_name %> </h2>
 
-<h4>These are your books</h4> <h5>[add more]</h5>
+<h4>These are your books</h4> 
+<h5><%= link_to "[add more]", new_book_path %></h5>
 
 <% @user.books.each do |book| %>
-  <ul>
-    <li><%= book.title %></li>
-  </ul>
+    <img src='<%= book.cover_image_link %>'>
 <% end %>
