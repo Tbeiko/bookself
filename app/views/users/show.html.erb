@@ -1,30 +1,30 @@
 <div id="user_nav">
   <% if current_user %>
-    Signed in as <strong><%= current_user.first_name %></strong>!
+    Welcome <strong><%= current_user.first_name %></strong>!
     <%= link_to "Sign out", signout_path, id: "sign_out" %>
   <% else %>
     <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
   <% end %>
 </div>
 
-<% if @user == current_user %>
-  <h4>These are your books.</h4>
-<% else %>
-  <h4>These are <%=@user.first_name %>'s books</h4> 
-<% end %>
+<ul class='list list-inline'>
+  <% if @user == current_user %>
+    <li><h4>These are your books.</h4></li>
+  <% else %>
+    <li><h4>These are <%=@user.first_name %>'s books</h4></li>
+  <% end %>
 
-<h5><%= link_to "[add more]", new_book_path %></h5>
-
+  <li><h5><%= link_to "[add more]", new_book_path %></h5></li>
+</ul>
 
 <div class='all-books' >
   <% @user.books.each do |book| %>
-    <!-- ... -->
     <div class='col-sm-3 col-xs-6 book-row'>
       <div class='' >
-      <a href='<%= book.amazon_link %>'>
-        <img class='profile-book img-responsive' src='<%= book.cover_image_link %>'>
-      </a>
+        <a href='<%= book.amazon_link %>'>
+          <img class='profile-book img-responsive' src='<%= book.cover_image_link %>'>
+        </a>
+      </div>
     </div>
-  </div><!-- ... -->
   <% end %>
 </div>
