@@ -14,3 +14,34 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+img { 
+
+}
+
+.all-books {
+  font-size: 0;
+}
+
+.book-row {
+    display: inline-block;
+    float: none;
+}
+
+
+.profile-book {
+  vertical-align: bottom;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+@media (min-width: 768px) { 
+
+}
+
+@media (min-width: 992px) {
+  .profile-book {
+    max-width: 230px;
+  }
+}
+

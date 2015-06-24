@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
 
-  root 'users#show'
+  root 'static_pages#index'
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
 
   resources :books, except: [:edit]
+  resources :users, except: [:destroy]
   
   get '/search', to: 'books#search'
   post '/search', to: 'books#search'

@@ -1,0 +1,11 @@
+<h1>Welcome to bookself!</h1>
+
+<div id="user_nav">
+  <% if current_user %>
+    <%= link_to "Go to my bookself", user_path(current_user) %>
+    </br>
+    <%= link_to "Sign out", signout_path, id: "sign_out" %>
+  <% else %>
+    <%= link_to "Sign in with Facebook to create your bookself", "/auth/facebook", id: "sign_in" %>
+  <% end %>
+</div>
