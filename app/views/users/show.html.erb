@@ -1,12 +1,3 @@
-<div id="user_nav">
-  <% if current_user %>
-    Welcome <strong><%= current_user.first_name %></strong>!
-    <%= link_to "Sign out", signout_path, id: "sign_out" %>
-  <% else %>
-    <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
-  <% end %>
-</div>
-
 <ul class='list list-inline'>
   <% if @user == current_user %>
     <li><h4>These are your books.</h4></li>

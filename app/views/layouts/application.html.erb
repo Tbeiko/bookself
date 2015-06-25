@@ -26,7 +26,14 @@
      }(document, 'script', 'facebook-jssdk'));
   </script>
 
+  <div class="container" >
+    <div class='navigation'>
+      <%= render 'layouts/navigation' %>
+    </div>
+  </div>
+
   <div class="container">
+    <%= render 'layouts/messages' %>
     <%= yield %>
   </div>
 

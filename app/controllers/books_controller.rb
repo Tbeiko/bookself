@@ -11,16 +11,6 @@ class BooksController < ApplicationController
     @covers = Amazon::Ecs.item_search(search_term, { :response_group => 'Images',
                                                      :search_index => 'Books',
                                                      :sort => 'relevancerank' })
-
-      case 
-      when @covers.items[n].get('LargeImage/URL') == nil
-        true
-      when (FastImage.size(@covers.items[n].get('LargeImage/URL'))[0]) < 200
-        true
-      else
-        false
-      end
-    end
     render :new
   end
 
@@ -39,7 +29,9 @@ class BooksController < ApplicationController
 
     if @book.save
       redirect_to user_path(current_user)
+      flash[:success] = "#{@book.title} was added to your bookself."
     else
+      flash[:danger] = "Something went wrong, please try again."
       render :new
     end
   end
