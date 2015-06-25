@@ -11,6 +11,16 @@ class BooksController < ApplicationController
     @covers = Amazon::Ecs.item_search(search_term, { :response_group => 'Images',
                                                      :search_index => 'Books',
                                                      :sort => 'relevancerank' })
+
+      case 
+      when @covers.items[n].get('LargeImage/URL') == nil
+        true
+      when (FastImage.size(@covers.items[n].get('LargeImage/URL'))[0]) < 200
+        true
+      else
+        false
+      end
+    end
     render :new
   end
 
@@ -39,6 +49,5 @@ class BooksController < ApplicationController
     def book_params
       params.require(:book).permit(:title, :authors, :amazon_link, :asin, :cover_image_link)
     end
-
 
 end

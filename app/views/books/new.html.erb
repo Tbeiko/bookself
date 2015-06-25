@@ -6,21 +6,21 @@
 
 <div class='all-books' >
     <% @books.items.each_with_index do |book, n| %>
-    <% unless @covers.items[n].get('LargeImage/URL') == nil %>
-    <div class='col-md-2 col-sm-3 col-xs-4 book-row'>
-      <div class='' >
-        <%= form_for @book do |f| %>
-          <% item_attributes = book.get_element('ItemAttributes') %>
-            <input name="book[title]" type="hidden" value="<%= item_attributes.get('Title') %>"/>
-            <input name="book[authors]" type="hidden" value="<%= item_attributes.get('Author') %>"/>
-            <input name="book[amazon_link]" type="hidden" value="<%= book.get_element('ItemLink').get('URL') %>"/>
-            <input name="book[asin]" type="hidden" value="<%= @covers.items[n].get('ASIN') %>"/>
-            <input name="book[cover_image_link]" type="hidden" value="<%= @covers.items[n].get('LargeImage/URL') %>"/>
-            <%= image_submit_tag(@covers.items[n].get('LargeImage/URL'), class: 'img-responsive search-book')  %>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
+    <% unless (@covers.items[n].get('LargeImage/URL') == nil) || ((FastImage.size(@covers.items[n].get('LargeImage/URL'))[0]) < 200) %>
+      <div class='col-md-2 col-sm-3 col-xs-4 book-row'>
+        <div class='' >
+          <%= form_for @book do |f| %>
+            <% item_attributes = book.get_element('ItemAttributes') %>
+              <input name="book[title]" type="hidden" value="<%= item_attributes.get('Title') %>"/>
+              <input name="book[authors]" type="hidden" value="<%= item_attributes.get('Author') %>"/>
+              <input name="book[amazon_link]" type="hidden" value="<%= book.get_element('ItemLink').get('URL') %>"/>
+              <input name="book[asin]" type="hidden" value="<%= @covers.items[n].get('ASIN') %>"/>
+              <input name="book[cover_image_link]" type="hidden" value="<%= @covers.items[n].get('LargeImage/URL') %>"/>
+              <%= image_submit_tag(@covers.items[n].get('LargeImage/URL'), class: 'img-responsive search-book')  %>
+          <% end %>      
+        </div>
+      </div>  
+    <% end %>
     <% end %>
   <% end %>
 </div>

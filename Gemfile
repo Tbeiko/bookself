@@ -12,6 +12,9 @@ gem 'omniauth-facebook'
 # Bootstrap for looks
 gem 'bootstrap-sass', '~> 3.3.5'
 
+# Evaluate Image Size
+gem 'fastimage'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
