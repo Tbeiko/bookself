@@ -6,7 +6,7 @@
 
 <div class='all-books' >
     <% @books.items.each_with_index do |book, n| %>
-    <% unless (@covers.items[n].get('LargeImage/URL') == nil) || ((FastImage.size(@covers.items[n].get('LargeImage/URL'))[0]) < 200) %>
+    <% unless (@covers.items[n].get('LargeImage/URL') == nil) || ((FastImage.size(@covers.items[n].get('LargeImage/URL'))[0]) < 200 || nil) %>
       <div class='col-md-2 col-sm-3 col-xs-4 book-row'>
         <div class='' >
           <%= form_for @book do |f| %>

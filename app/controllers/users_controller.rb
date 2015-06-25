@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :require_user, only: [:edit, :following, :followers]
 
   def show
+    @books = @user.books.order('user_books.created_at desc')
   end
 
   def following
