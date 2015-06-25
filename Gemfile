@@ -15,6 +15,11 @@ gem 'bootstrap-sass', '~> 3.3.5'
 # Evaluate Image Size
 gem 'fastimage'
 
+# Create fake data for tests
+gem 'faker'
+
+# Paginate 
+gem 'will_paginate',           '3.0.7'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'

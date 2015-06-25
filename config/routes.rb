@@ -5,12 +5,19 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
-
-  resources :books, except: [:edit]
-  resources :users, except: [:destroy]
-  
   get '/search', to: 'books#search'
   post '/search', to: 'books#search'
+
+  resources :books, except: [:edit]
+  resources :users, except: [:destroy] do  
+    member do
+      resources :relationships, only: [:create, :destroy]
+      get :following, :followers
+    end
+  end
+  
+
+ 
 
 
   

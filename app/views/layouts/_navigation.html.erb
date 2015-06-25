@@ -1,13 +1,19 @@
 <div>
   <ul class='list-inline'>
     <li class="nav">
-      <h2 id="title">Bookself</h2>
+      <%= link_to root_path do %>
+        <h2 id="title">Bookself</h2>
+      <% end %>
     </li>
     <li class="nav pull-right">   
       <ul class='list-inline'>
         <% if current_user %>
 <!--           <li><img id='user-photo' src='<%= current_user.image %>'></img></li>  -->
-          <li><h3 id ='user-name'><%= current_user.first_name %></h3></li> 
+          <li>
+            <%= link_to user_path(current_user) do %>
+              <h3 id ='user-name'><%= current_user.first_name %></h3>
+            <% end %>
+            </li> 
           <li>
             <%= link_to signout_path, id: "sign_out" do %>
 <!--               <img id='fb-logout' src='/images/fb_logout.png' /> -->

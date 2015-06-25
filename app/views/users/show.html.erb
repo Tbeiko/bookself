@@ -1,11 +1,19 @@
+<div class='user-information'>
+
+  <div class="text-center">
+    <h3><%= @user.first_name %></h3>
+    <%= render 'shared/stats' %>
+    <%= render 'following_form' if logged_in? %>
+  </div>
+</div>
+
 <ul class='list list-inline'>
   <% if @user == current_user %>
-    <li><h4>These are your books.</h4></li>
+    <li><h4>These are your books.</h4></li>  
+    <li><h5><%= link_to "[add more]", new_book_path %></h5></li>
   <% else %>
     <li><h4>These are <%=@user.first_name %>'s books</h4></li>
   <% end %>
-
-  <li><h5><%= link_to "[add more]", new_book_path %></h5></li>
 </ul>
 
 <div class='all-books' >
