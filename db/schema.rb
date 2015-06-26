@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150625164140) do
+ActiveRecord::Schema.define(version: 20150626150109) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150625164140) do
     t.string   "cover_image_link"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -59,6 +60,7 @@ ActiveRecord::Schema.define(version: 20150625164140) do
     t.datetime "expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
 
 end
