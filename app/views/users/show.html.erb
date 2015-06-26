@@ -1,7 +1,8 @@
 <div class='user-information'>
 
   <div class="text-center">
-    <h3><%= @user.first_name %></h3>
+    <img class='img-circle' id='profile-photo' src='<%= @user.image %>'/>
+    <h3><%= @user.first_name%> <%=@user.last_name%> </h3>
     <%= render 'shared/stats' %>
     <%= render 'following_form' if logged_in? %>
   </div>

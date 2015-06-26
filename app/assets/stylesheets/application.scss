@@ -15,8 +15,22 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-img { 
+#header {
+  height: 400px;
+  background-color: yellow;
+}
 
+/* navbar & profile picture need to be sized for small screens */
+
+#navbar {
+  margin-right: 5%;
+  margin-left: 5%;
+}
+
+#profile-photo {
+  margin-top: -63px;
+  width: 126px;
+  height: 126px;
 }
 
 .all-books {
@@ -42,9 +56,23 @@ img {
     padding-right: -5px;
   }
 
+  #main {
+    width: 650px;
+  }
+
+}
+
+@media (min-width: 992px) {
+  #main {
+    width: 850px;
+  }
 }
 
 @media (min-width: 1200px) {
+  #main {
+    width: 1000px;
+  }
+
   .profile-book {
     max-width: 200px;
   }
