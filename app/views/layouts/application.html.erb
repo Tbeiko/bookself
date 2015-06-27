@@ -26,9 +26,15 @@
      }(document, 'script', 'facebook-jssdk'));
   </script>
 
+  <div class="container-fluid" id='background-photo'>
+  </div>
   <div class="container-fluid" id='header' >
     <div class='navigation'>
-      <%= render 'layouts/navigation' %>
+      <% if current_page?(root_path) %>
+        <%= render 'static_pages/index_navigation' %>
+      <% else %> 
+        <%= render 'layouts/navigation' %>
+      <% end %>
     </div>
   </div>
 
