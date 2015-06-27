@@ -1,0 +1,19 @@
+$(document).on("scroll", function(){
+  if
+    ($(document).scrollTop() > $("#background-photo").height() ){
+    $("#header").addClass("shrink");
+    click_to_show_header();
+  }
+  else
+  {
+    $("#header").removeClass("shrink");
+  }
+
+});
+
+function click_to_show_header() {
+  $("#header").click(function() {
+    $("#header").removeClass("shrink");
+  });
+}
+

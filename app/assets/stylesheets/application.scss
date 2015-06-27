@@ -27,7 +27,19 @@
   background-color: yellow;
 }
 
-/* navbar & profile picture need to be sized for small screens */
+#header {
+  width: 100%;
+  background: black;
+  position: fixed;
+  z-index: 100;
+   /* animation magic */
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out ;
+}
+
+.shrink {
+  margin-top: -50px;
+}
 
 #navbar {
   margin-right: 5%;
@@ -38,6 +50,10 @@
   margin-top: 177px;
   width: 100px;
   height: 100px;
+}
+
+#main {
+  height: 1000px;
 }
 
 .all-books {
