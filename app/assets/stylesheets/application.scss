@@ -29,7 +29,7 @@
 
 #header {
   width: 100%;
-  background: white;
+  background: none;
   position: fixed;
   z-index: 100;
    /* animation magic */
@@ -52,7 +52,7 @@
 }
 
 #profile-photo {
-  margin-top: 177px;
+  margin-top: 250px;
   width: 100px;
   height: 100px;
 }
@@ -86,7 +86,7 @@
   }
 
   #profile-photo {
-    margin-top: 264px;
+    margin-top: 327px;
     width: 126px;
     height: 126px;
   }
