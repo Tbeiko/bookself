@@ -3,12 +3,14 @@ $(document).on("scroll", function(){
     ($(document).scrollTop() > $("#background-photo").height() ){
     $("#header").addClass("shrink");
     $("#header").css("background", "white");
+    $("#header").css("cursor", "pointer")
     click_to_show_header();
   }
   else
   {
     $("#header").removeClass("shrink");
     $("#header").css("background", "none");
+    $("#header").css("cursor", "auto")
   }
 
 });
