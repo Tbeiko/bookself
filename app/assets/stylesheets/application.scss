@@ -39,7 +39,8 @@
   -webkit-transition: all 0.4s ease-in-out;
   -moz-transition: all 0.4s ease-in-out ;
   box-shadow: 0 0px 5px rgba(0, 0, 0, 0.5);
-  font-family: 'Leitura3';}
+  font-family: 'Leitura3';
+}
 
 .shrink {
   margin-top: -50px;
@@ -49,14 +50,32 @@
   background-color: pink;
 }
 
-#navbar {
+.navbar {
   margin-right: 5%;
   margin-left: 5%;
+  margin-bottom: 0;
+  vertical-allign: middle;
 }
 
-.nav-list{
-  line-height: 40px;
-  vertical-align: bottom;  
+#nav-item {
+  line-height: 50px;
+  vertical-allign: middle;
+}
+
+.nav-inner {
+  text-align: center;
+}
+
+.nav-center{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin:0;
+    float:none;
+}
+
+#main-container {
+  padding-top: 90px;
 }
 
 #profile-photo {
@@ -78,7 +97,6 @@
     display: inline-block;
     float: none;
 }
-
 
 .profile-book, .search-book {
   vertical-align: bottom;
@@ -108,6 +126,7 @@
     width: 650px;
   }
 
+
 }
 
 @media (min-width: 992px) {
@@ -124,5 +143,6 @@
   .profile-book {
     max-width: 200px;
   }
+
 }
 

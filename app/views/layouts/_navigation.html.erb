@@ -1,24 +1,30 @@
-<div id='navbar'>
+<nav class='navbar nav-inner'>
   <ul class='list-inline '>
-    <li class="nav nav-list">
+
+    <li class="nav nav-item navbar-left">
+      <h3>Explore</h3>
+    </li>
+
+    <li class="nav nav-item navbar-center">
       <%= link_to root_path do %>
-        <h2 id="title">Bookself</h2>
+        <h3 id="title">Bookself</h3>
       <% end %>
     </li>
 
     <% if current_user %>
 
-      <li class='nav pull-right'>
-        <h4><%= link_to "Sign out", signout_path %></h4>
+      <li class='nav nav-item navbar-right'>
+        <ul class='list-inline'>
+          <li><h3><%= link_to "#{current_user.first_name}", user_path(current_user) %><h3></li>
+          <li><%= link_to "Sign out", signout_path %></li>
+        </ul>
       </li>
 
-      <li class='nav pull-right'>
-        <h3><%= link_to "#{current_user.first_name}", user_path(current_user) %></h3>
-      </li>
+
 
     <% else %>
 
-      <li class='nav pull-right'>
+      <li class='nav nav-item navbar-right'>
         <%= link_to "/auth/facebook", id: "sign_in" do%>
           Log in with Facebook
         <% end %>
@@ -26,5 +32,5 @@
 
     <% end %>
   </ul>
-</div>
+</nav>
     
