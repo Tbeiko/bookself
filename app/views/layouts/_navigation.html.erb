@@ -11,26 +11,17 @@
       <% end %>
     </li>
 
-    <% if current_user %>
 
       <li class='nav nav-item navbar-right'>
         <ul class='list-inline'>
-          <li><h3><%= link_to "#{current_user.first_name}", user_path(current_user) %><h3></li>
-          <li><%= link_to "Sign out", signout_path %></li>
+          <% if current_user %>
+            <li><h3><%= link_to "#{current_user.first_name}", user_path(current_user) %><h3></li>
+            <li><%= link_to "Sign out", signout_path %></li> 
+          <% else %>
+            <li><h3><%= link_to "Sign in", '/auth/facebook' %><h3></li>
+          <% end %>
         </ul>
-      </li>
-
-
-
-    <% else %>
-
-      <li class='nav nav-item navbar-right'>
-        <%= link_to "/auth/facebook", id: "sign_in" do%>
-          Log in with Facebook
-        <% end %>
-      </li>
-
-    <% end %>
+      </li>   
   </ul>
 </nav>
     

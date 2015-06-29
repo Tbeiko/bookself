@@ -26,8 +26,13 @@
      }(document, 'script', 'facebook-jssdk'));
   </script>
 
-  <div class="container-fluid" id='background-photo'>
-  </div>
+  <% if current_page?(root_path) %>
+    <div class="container-fluid">
+    </div>
+  <% else %> 
+    <div class="container-fluid" id='background-photo'>
+    </div>
+  <% end %>
 
   <div class="container-fluid" id='header' >
     <div class='navigation'>
@@ -39,7 +44,11 @@
     </div>
   </div>
 
-  <div class="container" id='main-container'>
+  <% if current_page?(root_path) %>
+    <div class="container-fluid">
+  <% else %> 
+    <div class="container" id='main-container'>
+  <% end %>
     <%= render 'layouts/messages' %>
     <%= yield %>
   </div>
