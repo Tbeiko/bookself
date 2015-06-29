@@ -1,13 +1,13 @@
 <div id='home-page'>
-  <h1>Welcome to bookself!</h1>
-
-  <div id="user_nav">
+  <section class='home-top'>
+    <h1 class="title">Books. Pass 'em on.</h1>
+    <p class="paragraph">Find the best reads from your friends and inspirations.</br>
+       Recommend books to people you know.</p>
     <% if current_user %>
       <%= link_to "Go to my bookself", user_path(current_user) %>
-      </br>
-      <%= link_to "Sign out", signout_path, id: "sign_out" %>
     <% else %>
-      <%= link_to "Sign in with Facebook to create your bookself", "/auth/facebook", id: "sign_in" %>
+      <%= link_to "Create my bookself", "/auth/facebook", id: "sign_in" %>
     <% end %>
-  </div>
+  </section>
+
 </div>

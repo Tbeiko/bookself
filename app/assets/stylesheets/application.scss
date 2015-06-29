@@ -16,8 +16,6 @@
 @import "bootstrap";
 @import "fonts";
 
-
-
 .container, .container-fluid {
   background: none;
 }
@@ -76,6 +74,19 @@
 
 #main-container {
   padding-top: 90px;
+}
+
+.home-top {
+  text-align: center;
+  /* Need to fix background for this */
+  background: red;
+
+  .title {
+    font-family: 'Leitura3';
+  }
+  .paragraph {
+    font-family: "Karla";
+  }
 }
 
 #profile-photo {
