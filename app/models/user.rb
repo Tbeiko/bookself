@@ -23,7 +23,6 @@ class User <ActiveRecord::Base
       user.last_name = auth.info.last_name
       user.email = auth.info.email
       user.image = auth.info.image + "?type=large"
-      binding.pry
       user.token = auth.credentials.token
       user.expires_at = Time.at(auth.credentials.expires_at)
       user.save!

@@ -13,10 +13,6 @@
   padding-right: 0;
 }
 
-section {
-  padding-top: 150px;
-}
-
 h1 {
   font-family: 'Leitura4';
 }
@@ -45,10 +41,10 @@ h2 {
   color: white;
 }
 
-
-
 .home-top {
   text-align: center;
+  height: 600px;
+  padding-top: 250px;
 
   .title {
     font-size: 48px;
@@ -79,6 +75,7 @@ h2 {
 }
 
 .home-middle {
+  margin-top: 75px;
   margin-bottom: 75px;
   background-color: white;
 }
@@ -98,8 +95,13 @@ h2 {
 
 .home-quote {
   text-align: center;
+  vertical-align: middle;
   background-color:#2E8A2E; 
   height: 400px;
+}
+
+.quote {
+  padding-top: 150px;
 }
 
 #quote-name {
@@ -107,6 +109,7 @@ h2 {
 }
 
 .home-bottom {
+  margin-top: 150px;
   background-color: white;
   text-align: center;
   height: 600px;
