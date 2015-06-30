@@ -1,8 +1,35 @@
 <div id='home-page'>
+
   <section class='home-top white'>
     <h1 class="title">Books. Pass 'em on.</h1>
     <p class="paragraph">Find the best reads from your friends and inspirations.</br>
        Recommend books to people you know.</p>
+    <p class='box-button center-block'>
+      <% if current_user %>
+        <%= link_to "GO TO MY BOOKSELF", user_path(current_user) %>
+      <% else %>
+        <%= link_to "CREATE MY BOOKSELF", "/auth/facebook", id: "sign_in" %>
+      <% end %>
+    </p>
+  </section>
+
+  <section class='home-middle black'>
+    <h1 class='text-left'>Algorithms only go so far.</h1>
+    <p class="paragraph">Explore freinds and inspirational people's bookshelves,</br>
+    get personal recommendations and pass 'em on.</p>
+    <p class="paragraph" id="explore">EXPLORE LIBRARIES  ></p>
+    <img src="" id="book-row-landing"/>
+  </section>
+
+  <section class='home-quote white'>
+    <h2>"If we encounter a man of rare intellect,</br>we should ask him what books he reads."</h2>
+    <p class="paragraph" id="quote-name">RALPH WALDO EMERSON</p>
+  </section>
+
+  <section class='home-bottom black'>
+    <h1>Try it for yourself.</h1>
+    <p class="paragraph">Create your bookshelf and receive recommendations.</p>
+    
     <p class='box-button center-block'>
       <% if current_user %>
         <%= link_to "GO TO MY BOOKSELF", user_path(current_user) %>

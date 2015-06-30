@@ -6,6 +6,25 @@
   color: black;
 }
 
+.container-fluid {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+section {
+  padding-top: 150px;
+}
+
+h1 {
+  font-family: 'Leitura4';
+}
+
+h2 {
+  font-family: 'Leitura3';
+}
+
 #background-photo-home {
   position: absolute;
   width: 100%;
@@ -26,32 +45,71 @@
   color: white;
 }
 
+
+
 .home-top {
   text-align: center;
-  padding-top: 70px;
 
   .title {
-    font-family: 'Leitura3';
     font-size: 48px;
   }
 
-  .paragraph {
-    padding-top: 25px;
-    font-family: "Karla";
-    font-size: 20px;
-  }
-
   .box-button {
-    margin-top: 40px;
-    width: 300px;
-    height: 45px;
     background-color: white;
-    line-height: 45px;
-    vertical-align: middle;
-    font-size: 20px;
     color: black;
-    font-weight: bold;
   }
+}
+
+.box-button {
+  margin-top: 40px;
+  width: 300px;
+  height: 45px;
+  background-color: #337ab7;
+  line-height: 45px;
+  vertical-align: middle;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+}
+
+.paragraph {
+  padding-top: 20px;
+  font-family: "Karla";
+  font-size: 20px;
+}
+
+.home-middle {
+  margin-bottom: 75px;
+  background-color: white;
+}
+
+#explore {
+  font-size: 23px;
+  font-weight: bold;
+  color: #337ab7;
+}
+
+#book-row-landing {
+  margin-top: 15px;
+  background-color: yellow;
+  height: 300px;
+  width: 100%;
+}
+
+.home-quote {
+  text-align: center;
+  background-color:#2E8A2E; 
+  height: 400px;
+}
+
+#quote-name {
+  font-size: 18px;
+}
+
+.home-bottom {
+  background-color: white;
+  text-align: center;
+  height: 600px;
 }
 
 @media (min-width: 768px) { 
@@ -59,5 +117,10 @@
     height: 600px;
     background-color: #2E8A2E;
   }
+
+  .home-middle {
+    margin-left: 5%;
+  }
+
 }
 
