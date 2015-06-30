@@ -8,8 +8,10 @@ Rails.application.routes.draw do
   get '/search', to: 'books#search'
   post '/search', to: 'books#search'
 
+  get '/explore', to: 'users#index'
+
   resources :books, except: [:edit]
-  resources :users, except: [:destroy] do  
+  resources :users, except: [:index, :destroy] do  
     member do
       resources :relationships, only: [:create, :destroy]
       get :following, :followers
