@@ -1,16 +1,22 @@
+// This is for the application.
+
 $(document).on("scroll", function(){
   if
-    ($(document).scrollTop() > $("#background-photo").height() ){
-    $("#header").addClass("shrink");
-    $("#header").css("background", "white");
-    $("#header").css("cursor", "pointer")
-    click_to_show_header();
+      ($(document).scrollTop() > $("#background-photo").height() ){
+      $("#header").addClass("shrink");
+      $("#header").css("background", "white");
+      $("#header").css("cursor", "pointer")
+      $("#header").css("color", "black");
+      $("#header").css("box-shadow", "0 0px 5px rgba(0, 0, 0, 0.5)");
+      click_to_show_header();
   }
   else
   {
     $("#header").removeClass("shrink");
     $("#header").css("background", "none");
     $("#header").css("cursor", "auto")
+    $("#header").css("color", "black");
+    $("#header").css("box-shadow", "none");
   }
 
 });
@@ -20,4 +26,34 @@ function click_to_show_header() {
     $("#header").removeClass("shrink");
   });
 }
+
+// This is only for the home page 
+
+$(document).on("scroll", function(){
+  if
+      ($(document).scrollTop() > $("#background-photo-home").height() ){
+      $("#header-home").addClass("shrink");
+      $("#header-home").css("background", "white");
+      $("#header-home").css("color", "black");
+      $("#header-home").css("cursor", "pointer")
+      $("#header-home").css("box-shadow", "0 0px 5px rgba(0, 0, 0, 0.5)");
+      click_to_show_home_header();
+  }
+  else
+  {
+    $("#header-home").removeClass("shrink");
+    $("#header-home").css("background", "none");
+    $("#header-home").css("color", "white");
+    $("#header-home").css("cursor", "auto")
+    $("#header-home").css("box-shadow", "none");
+  }
+
+});
+
+function click_to_show_home_header() {
+  $("#header-home").click(function() {
+    $("#header-home").removeClass("shrink");
+  });
+}
+
 

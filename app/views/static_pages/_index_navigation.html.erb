@@ -1,1 +1,27 @@
-<%= render 'layouts/navigation' %>    
+<nav class='navbar nav-inner'>
+  <ul class='list-inline '>
+
+    <li class="nav nav-item navbar-left">
+      <h3>Explore</h3>
+    </li>
+
+    <li class="nav nav-item navbar-center">
+      <%= link_to root_path do %>
+        <h3 id="title">Bookself</h3>
+      <% end %>
+    </li>
+
+
+      <li class='nav nav-item navbar-right'>
+        <ul class='list-inline'>
+          <% if current_user %>
+            <li><h3><%= link_to "#{current_user.first_name}", user_path(current_user) %><h3></li>
+            <li><%= link_to "Sign out", signout_path %></li> 
+          <% else %>
+            <li><h3><%= link_to "Sign in", '/auth/facebook' %><h3></li>
+          <% end %>
+        </ul>
+      </li>   
+  </ul>
+</nav>
+    

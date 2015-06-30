@@ -4,6 +4,7 @@
   <title>Bookself</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag params[:static_pages] %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -27,12 +28,12 @@
   </script>
 
 
-    <div class="container-fluid" id='background-photo'>
+    <div class="container-fluid" id='background-photo-home'>
     </div>
 
-    <div class="container-fluid" id='header' >
+    <div class="container-fluid" id='header-home'>
       <div class='navigation'>
-          <%= render 'layouts/navigation' %>
+          <%= render 'static_pages/index_navigation' %>
       </div>
     </div>
 

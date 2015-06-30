@@ -15,6 +15,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "fonts";
+@import "*";
+
+a, a.deco-none {
+    color:inherit !important;
+    text-decoration:none;
+}
 
 .container, .container-fluid {
   background: none;
@@ -28,7 +34,7 @@
   background-color: yellow;
 }
 
-#header {
+#header{
   width: 100%;
   background: none;
   position: fixed;
@@ -36,7 +42,6 @@
    /* animation magic */
   -webkit-transition: all 0.4s ease-in-out;
   -moz-transition: all 0.4s ease-in-out ;
-  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.5);
   font-family: 'Leitura3';
 }
 
@@ -74,19 +79,6 @@
 
 #main-container {
   padding-top: 90px;
-}
-
-.home-top {
-  text-align: center;
-  /* Need to fix background for this */
-  background: red;
-
-  .title {
-    font-family: 'Leitura3';
-  }
-  .paragraph {
-    font-family: "Karla";
-  }
 }
 
 #profile-photo {
@@ -133,7 +125,7 @@
     padding-right: -5px;
   }
 
-  #main {
+  #main-container {
     width: 650px;
   }
 
@@ -141,14 +133,21 @@
 }
 
 @media (min-width: 992px) {
-  #main {
+  #main-container {
     width: 850px;
   }
 }
 
 @media (min-width: 1200px) {
-  #main {
-    width: 1000px;
+
+  #profile-photo {
+    margin-top: 235px;
+    width: 150px;
+    height: 150px;
+  }
+
+  #main-container {
+    width: 900px;
   }
 
   .profile-book {
