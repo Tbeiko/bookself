@@ -36,5 +36,4 @@ class UsersController < ApplicationController
       @users_popular = User.all.sort_by {|user| user.followers.count}.reverse!
     end
 
-
 end

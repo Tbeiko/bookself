@@ -1,3 +1,5 @@
+<h2>Find freinds or get inspired by our featured users.</h2>
+
 <%= form_tag '/explore', :method => 'get', :id => "users_search" do %>
   <p>
     <%= text_field_tag :search, params[:search] %>
@@ -9,6 +11,10 @@
 <h2>Here are the popular users</h2>
 
 <% @users_popular.each do |user| %>
-  <p><%= user.first_name %></p>
-  <p><%= user.followers.count %> followers</p>
+  <ul class='list-inline'>
+    <li><%= user.first_name %></li>
+    <li><%= user.followers.count %> followers</li>
+    <li>---</li>
+    <li>Read <%= current_user.number_of_same_books(user) %> books you read.</li>
+  </ul>
 <% end %>

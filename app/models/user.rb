@@ -51,5 +51,17 @@ class User <ActiveRecord::Base
     else
     end
   end
+
+  def number_of_same_books(user)
+    current_user_books = self.books.uniq
+    user_books         = user.books.uniq
+    different_books    = (current_user_books - user_books).count
+    if different_books < 0
+      different_books =  different_books*-1
+    end 
+    same_books = current_user_books.count - different_books
+    return same_books
+  end
+
   
 end
