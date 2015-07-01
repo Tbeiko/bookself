@@ -1,6 +1,6 @@
 <% unless (@searched_users == nil) %>
   <% @searched_users.each do |user| %>
-    <ul class="list-inline">
+    <ul class="list-inline text-center">
       <li><%= user.first_name %></li>
       <li><%= user.last_name %></li>
       <li>read <%= current_user.number_of_same_books(user) %> books you read.</li>

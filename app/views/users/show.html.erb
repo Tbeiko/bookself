@@ -5,26 +5,39 @@
     <h3><%= @user.first_name%> <%=@user.last_name%> </h3>
     <%= render 'shared/stats' %>
     <%= render 'following_form' if logged_in? %>
+    <% if @user == current_user %>
+    <h5><%= link_to "ADD A BOOK", new_book_path %></h5>
+    <% end %>
   </div>
 </div>
 
-<ul class='list list-inline'>
-  <% if @user == current_user %>
-    <li><h4>These are your books.</h4></li>  
-    <li><h5><%= link_to "[add more]", new_book_path %></h5></li>
-  <% else %>
-    <li><h4>These are <%=@user.first_name %>'s books</h4></li>
-  <% end %>
+<ul class='nav nav-pills'>
+    <li class='<%= 'active' if params[:tab].nil? %>'>
+      <%= link_to "BOOKSHELF", user_path(@user) %>
+    </li>
+    <li class='<%= 'active' if params[:tab] == 'to-read' %>'>
+      <%= link_to "TO READ", user_path(@user, tab: 'to-read') %>
+    </li>  
+    <li class='<%= 'active' if params[:tab] == 'following' %>'>
+      <%= link_to "FOLLOWING", user_path(@user, tab: 'following') %>
+    </li>  
 </ul>
 
-<div class='all-books' >
-  <% @books.each do |book| %>
-    <div class='col-sm-3 col-xs-6 book-row'>
-      <div class='' >
-        <a href='<%= book.amazon_link %>'>
-          <img class='profile-book img-responsive' src='<%= book.cover_image_link %>'>
-        </a>
+<% if params[:tab].nil? %>
+  <div class='all-books' >
+    <% @books.each do |book| %>
+      <div class='col-sm-3 col-xs-6 book-row'>
+        <div class='' >
+          <a href='<%= book.amazon_link %>'>
+            <img class='profile-book img-responsive' src='<%= book.cover_image_link %>'>
+          </a>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+<% elsif params[:tab] == 'to-read' %>
+  <h3>No books to read yet!</h3>
+<% elsif params[:tab] == 'following' %>
+  <h3> Following </h3>
+<% end %>
+
