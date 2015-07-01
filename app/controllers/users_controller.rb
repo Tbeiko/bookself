@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show]
   before_action :require_user, only: [:edit, :following, :followers]
+  before_action :sort_users_by_followers, only: [:index]
 
   def index
-
+    @searched_users = User.search(params[:search])
   end
 
   
@@ -29,6 +30,10 @@ class UsersController < ApplicationController
 
     def set_user
       @user = User.find_by(slug: params[:id])
+    end
+
+    def sort_users_by_followers
+      @users_popular = User.all.sort_by {|user| user.followers.count}.reverse!
     end
 
 

@@ -1,1 +1,14 @@
-<h1>Hey hey heys</h1>
+<%= form_tag '/explore', :method => 'get', :id => "users_search" do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+  <div id="users"><%= render 'users' %></div>
+<% end %>
+
+<h2>Here are the popular users</h2>
+
+<% @users_popular.each do |user| %>
+  <p><%= user.first_name %></p>
+  <p><%= user.followers.count %> followers</p>
+<% end %>

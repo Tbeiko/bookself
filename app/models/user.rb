@@ -43,5 +43,13 @@ class User <ActiveRecord::Base
   def following?(other_user)
     following.include?(other_user)
   end
+
+  def self.search(search)
+    if search
+      key = "%#{search}%"
+      where('first_name LIKE :search OR last_name LIKE :search', search: key)
+    else
+    end
+  end
   
 end
