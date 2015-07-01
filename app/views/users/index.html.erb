@@ -5,16 +5,19 @@
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search", :name => nil %>
   </p>
-  <div id="users"><%= render 'users' %></div>
+  <div id="users">
+    <%= render 'users_search' unless (@searched_users == nil) %>
+  </div>
 <% end %>
 
 <h2>Here are the popular users</h2>
 
 <% @users_popular.each do |user| %>
-  <ul class='list-inline'>
-    <li><%= user.first_name %></li>
-    <li><%= user.followers.count %> followers</li>
-    <li>---</li>
-    <li>Read <%= current_user.number_of_same_books(user) %> books you read.</li>
-  </ul>
+    <%= link_to user_path(user) do %>
+      <ul class='list-inline'>
+        <li><%= user.first_name %></li>
+        <li><%= user.followers.count %> followers</li>
+        <li>Read <%= current_user.number_of_same_books(user) %> books you read.</li>
+      </ul>
+    <% end %>
 <% end %>

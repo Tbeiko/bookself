@@ -1,0 +1,11 @@
+<div class='all-books' >
+  <% @books.each do |book| %>
+    <div class='col-sm-3 col-xs-6 book-row'>
+      <div class='' >
+        <a href='<%= book.amazon_link %>'>
+          <img class='profile-book img-responsive' src='<%= book.cover_image_link %>'>
+        </a>
+      </div>
+    </div>
+  <% end %>
+</div>

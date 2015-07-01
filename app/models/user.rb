@@ -52,6 +52,12 @@ class User <ActiveRecord::Base
     end
   end
 
+  def same_books(user)
+    current_user_books = self.books.uniq
+    user_books         = user.books.uniq
+    same_books = current_user_books & user_books
+  end
+
   def number_of_same_books(user)
     current_user_books = self.books.uniq
     user_books         = user.books.uniq
@@ -59,8 +65,8 @@ class User <ActiveRecord::Base
     if different_books < 0
       different_books =  different_books*-1
     end 
-    same_books = current_user_books.count - different_books
-    return same_books
+    same_books_total = current_user_books.count - different_books
+    return same_books_total
   end
 
   

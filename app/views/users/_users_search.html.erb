@@ -1,0 +1,12 @@
+<% if @searched_users.empty? %>
+  <h3>Your search didn't return anyting.</br>Try using people's first or last names.</h3>
+<% else %>
+  <% @searched_users.each do |user| %>
+      <%= link_to user_path(user) do %>
+        <ul class="list-inline">
+          <li><%= user.first_name + " " + user.last_name%></li>
+          <li>read <%= current_user.number_of_same_books(user) %> books you read.</li>
+        </ul>
+      <% end %>
+  <% end %>
+<% end %>

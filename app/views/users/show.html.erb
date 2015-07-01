@@ -3,7 +3,10 @@
   <div class="text-center">
     <img class='img-circle' id='profile-photo' src='<%= @user.image %>'/>
     <h3><%= @user.first_name%> <%=@user.last_name%> </h3>
-    <%= render 'shared/stats' %>
+      <% unless @user == current_user %>
+        <%= link_to "#{current_user.number_of_same_books(@user)} books in common", user_path(@user, tab: 'books') %>
+      <% end %>
+      <%= link_to "#{@user.followers.count} followers", user_path(@user, tab: 'followers') %>
     <%= render 'following_form' if logged_in? %>
     <% if @user == current_user %>
     <h5><%= link_to "ADD A BOOK", new_book_path %></h5>
@@ -11,33 +14,29 @@
   </div>
 </div>
 
-<ul class='nav nav-pills'>
-    <li class='<%= 'active' if params[:tab].nil? %>'>
-      <%= link_to "BOOKSHELF", user_path(@user) %>
-    </li>
-    <li class='<%= 'active' if params[:tab] == 'to-read' %>'>
-      <%= link_to "TO READ", user_path(@user, tab: 'to-read') %>
-    </li>  
-    <li class='<%= 'active' if params[:tab] == 'following' %>'>
-      <%= link_to "FOLLOWING", user_path(@user, tab: 'following') %>
-    </li>  
-</ul>
+<div class="col-md-12 text-center">
+  <ul class='nav nav-pills center-pills'>
+      <li class='<%= 'active' if params[:tab].nil? %>'>
+        <%= link_to "BOOKSHELF", user_path(@user) %>
+      </li>
+      <li class='<%= 'active' if params[:tab] == 'to-read' %>'>
+        <%= link_to "TO READ", user_path(@user, tab: 'to-read') %>
+      </li>  
+      <li class='<%= 'active' if params[:tab] == 'following' %>'>
+        <%= link_to "FOLLOWING (#{@user.following.count})", user_path(@user, tab: 'following') %>
+      </li>  
+  </ul>
+</div>
 
 <% if params[:tab].nil? %>
-  <div class='all-books' >
-    <% @books.each do |book| %>
-      <div class='col-sm-3 col-xs-6 book-row'>
-        <div class='' >
-          <a href='<%= book.amazon_link %>'>
-            <img class='profile-book img-responsive' src='<%= book.cover_image_link %>'>
-          </a>
-        </div>
-      </div>
-    <% end %>
-  </div>
+  <%= render 'user_books' %>
 <% elsif params[:tab] == 'to-read' %>
   <h3>No books to read yet!</h3>
+<% elsif params[:tab] == 'followers' %>
+  <%= render 'show_follow' %>
 <% elsif params[:tab] == 'following' %>
-  <h3> Following </h3>
+  <%= render 'show_follow' %>
+<% elsif params[:tab] == 'books' %>
+  <%= render 'user_books' %>
 <% end %>
 

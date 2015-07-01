@@ -9,21 +9,26 @@ class UsersController < ApplicationController
 
   
   def show
-    @books = @user.books.order('user_books.created_at desc')
+    case params[:tab]
+    when 'books'
+      @books = current_user.same_books(@user)
+    when 'following'
+      following
+    when 'followers'
+      followers
+    else
+      @books = @user.books.order('user_books.created_at desc')
+    end
   end
 
   def following
     @title = "Following"
-    set_user
-    @users = @user.following.paginate(page: params[:page])
-    render '/users/_show_follow'
+    @users = @user.following.sort_by {|user| current_user.number_of_same_books(user)}.reverse!
   end
 
   def followers
     @title = "Followers"
-    set_user
-    @users = @user.followers.paginate(page: params[:page])
-    render '/users/_show_follow'
+    @users = @user.followers.sort_by {|user| current_user.number_of_same_books(user)}.reverse!
   end
 
   private
