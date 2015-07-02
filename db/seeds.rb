@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # Create Users
-100.times do |user, n|
+30.times do |user, n|
   user            = User.new
   user.first_name = Faker::Name.first_name
   user.last_name  = Faker::Name.last_name
@@ -27,11 +27,8 @@
     end
   end
 
-  # Add books to the user.
-  5.times do 
-    user.books << Book.first 
-    user.books << Book.last
-  end
+  # Add read books to the user.
+    
 
 end
 

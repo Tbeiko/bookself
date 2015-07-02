@@ -15,23 +15,23 @@
 </div>
 
 <div class="col-md-12 text-center">
-  <ul class='nav nav-pills center-pills'>
-      <li class='<%= 'active' if params[:tab].nil? %>'>
+  <ul class='nav nav-tabs center-pills'>
+      <li class='<%= 'active' if params[:tab].nil? %> tab'>
         <%= link_to "BOOKSHELF", user_path(@user) %>
       </li>
-      <li class='<%= 'active' if params[:tab] == 'to-read' %>'>
+      <li class='<%= 'active' if params[:tab] == 'to-read' %> tab'>
         <%= link_to "TO READ", user_path(@user, tab: 'to-read') %>
       </li>  
-      <li class='<%= 'active' if params[:tab] == 'following' %>'>
+      <li class='<%= 'active' if params[:tab] == 'following' %> tab'>
         <%= link_to "FOLLOWING (#{@user.following.count})", user_path(@user, tab: 'following') %>
       </li>  
   </ul>
 </div>
 
 <% if params[:tab].nil? %>
-  <%= render 'user_books' %>
+  <%= render 'user_books', tab: "books"%>
 <% elsif params[:tab] == 'to-read' %>
-  <h3>No books to read yet!</h3>
+  <%= render 'user_books', tab: "to-read" %>
 <% elsif params[:tab] == 'followers' %>
   <%= render 'show_follow' %>
 <% elsif params[:tab] == 'following' %>

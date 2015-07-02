@@ -77,6 +77,21 @@ a, a.deco-none {
     float:none;
 }
 
+.nav-tabs {
+  border: none;
+}
+
+.tab:hover {
+  border: none;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  border: none;
+  font-weight: bold;
+}
+
 #main-container {
   padding-top: 90px;
 }

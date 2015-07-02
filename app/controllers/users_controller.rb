@@ -13,12 +13,14 @@ class UsersController < ApplicationController
     case params[:tab]
     when 'books'
       @books = current_user.same_books(@user)
+    when 'to-read'
+      return_books("to-read")
     when 'following'
       following
     when 'followers'
       followers
     else
-      @books = @user.books.order('user_books.created_at desc')
+      return_books("read")
     end
   end
 
@@ -40,6 +42,16 @@ class UsersController < ApplicationController
 
     def sort_users_by_followers
       @users_popular = User.all.sort_by {|user| user.followers.count}.reverse!
+    end
+
+    def return_books(status)
+      @books = []
+      user_books = @user.user_books.order('user_books.created_at desc').where(status: status)
+      user_books.each do |ub|
+        book = Book.find_by(id: ub.book_id)
+        @books << book
+      end
+      @books
     end
 
 end

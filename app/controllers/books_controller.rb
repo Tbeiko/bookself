@@ -25,8 +25,7 @@ class BooksController < ApplicationController
       @book = Book.new(book_params)
     end
     
-    # Will need to update this when we'll have more users
-    @book.users << current_user
+    @book.add_to_user(current_user, "read")
 
     if @book.save
       redirect_to user_path(current_user)
@@ -40,7 +39,7 @@ class BooksController < ApplicationController
   private
 
     def book_params
-      params.require(:book).permit(:title, :authors, :amazon_link, :asin, :cover_image_link)
+      params.require(:book).permit(:title, :authors, :amazon_link, :asin, :cover_image_link, user_books: :status)
     end
 
 end
