@@ -27,9 +27,10 @@
      }(document, 'script', 'facebook-jssdk'));
   </script>
 
-
-    <div class="container-fluid" id='background-photo-home'>
-    </div>
+    <% unless current_page?('/explore') %>
+      <div class="container-fluid" id='background-photo-home'>
+      </div>
+    <% end %>
 
     <div class="container-fluid" id='header-home'>
       <div class='navigation'>

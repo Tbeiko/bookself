@@ -45,7 +45,8 @@ class User <ActiveRecord::Base
   end
 
   def self.search(search)
-    if search
+    if search == ""
+    elsif search
       key = "%#{search}%"
       where('first_name LIKE :search OR last_name LIKE :search', search: key)
     else

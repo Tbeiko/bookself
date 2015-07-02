@@ -1,6 +1,4 @@
-class StaticPagesController < ApplicationController\
-  
-
+class StaticPagesController < ApplicationController
   def index
     render :layout => 'landing'
   end

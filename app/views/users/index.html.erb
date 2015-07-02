@@ -1,4 +1,4 @@
-<h2>Find freinds or get inspired by our featured users.</h2>
+<%= render 'carousel' %>
 
 <%= form_tag '/explore', :method => 'get', :id => "users_search" do %>
   <p>
@@ -6,7 +6,7 @@
     <%= submit_tag "Search", :name => nil %>
   </p>
   <div id="users">
-    <%= render 'users_search' unless (@searched_users == nil) %>
+    <%= render 'users_search' unless @searched_users.nil? %>
   </div>
 <% end %>
 
