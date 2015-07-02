@@ -19,7 +19,19 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def bad_image?(n)
+    if @covers.items[n].get('LargeImage/URL').nil?
+      true
+    elsif (FastImage.size(@covers.items[n].get('LargeImage/URL'))[0]).nil?
+      true
+    elsif ((FastImage.size(@covers.items[n].get('LargeImage/URL'))[0]) < 200)
+      true
+    else
+      false
+    end
+  end
 
-  helper_method :current_user, :logged_in?, :require_user
+
+  helper_method :current_user, :logged_in?, :require_user, :bad_image?
 
 end
