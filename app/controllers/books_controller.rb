@@ -26,7 +26,6 @@ class BooksController < ApplicationController
     end
     
     @book.users << current_user
-    # @book.user_books.last.update_attributes!
     @book.user_books.last.update_attributes!({status: params[:book][:status]})
     @book.user_books.last.save
     binding.pry
