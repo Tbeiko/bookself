@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
   get '/explore', to: 'users#index'
 
+  post 'read', to: 'books#read'
+  post 'to_read', to: 'books#to_read'
+
   resources :books, except: [:edit]
   resources :users, except: [:index, :destroy] do  
     member do
