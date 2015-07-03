@@ -27,8 +27,9 @@
     end
   end
 
-  # Add read books to the user.
+  # Add read books to the user
     
+  # Add to-read books to the user
 
 end
 
