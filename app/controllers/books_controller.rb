@@ -28,7 +28,6 @@ class BooksController < ApplicationController
     @book.users << current_user
     @book.user_books.last.update_attributes!({status: params[:book][:status]})
     @book.user_books.last.save
-    binding.pry
 
     if @book.save
       redirect_to user_path(current_user)
