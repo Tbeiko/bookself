@@ -46,7 +46,7 @@ class UsersController < ApplicationController
 
     def return_books(status)
       @books = []
-      user_books = @user.user_books.order('user_books.created_at desc').where(status: status)
+      user_books = @user.user_books.order('user_books.updated_at desc').where(status: status)
       user_books.each do |ub|
         book = Book.find_by(id: ub.book_id)
         @books << book

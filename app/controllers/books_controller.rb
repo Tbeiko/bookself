@@ -19,45 +19,6 @@ class BooksController < ApplicationController
     @book = Book.new
   end
 
-  # def create
-  #   if Book.find_by(amazon_link: params[:book][:amazon_link]) 
-  #     @book = Book.find_by(amazon_link: params[:book][:amazon_link]) 
-  #     current_user.books << @book 
-
-  #     # redirect_to current_user.books.find_by(amazon_link: params[:book][:amazon_link]).tap do |book|
-  #     #   book.user_books.last.update_attributes!(book_params)
-  #     #   binding.pry
-  #     # end
-
-  #     redirect_to current_account.users.find(params[:id]).tap do |user|
-  #       binding.pry
-  #     end
-
-  #   # redirect_to current_account.people.find(params[:id]).tap do |person|
-  #   #   person.update_attributes!(person_params)
-  #   # end
-
-  #   else @book = Book.new 
-  #     @book.title = params[:book][:title]
-  #     @book.authors = params[:book][:authors]
-  #     @book.amazon_link = params[:book][:amazon_link]
-  #     @book.asin = params[:book][:asin]
-  #     @book.cover_image_link = params[:book][:cover_image_link]
-  #     @book.users << current_user
-  #     @book.user_books.last.status = params[:user_book][:status]
-  #     @book.user_books.last.status.save
-  #   end
-  
-
-  #   # if @book.save
-  #   #   redirect_to user_path(current_user)
-  #   #   flash[:success] = "#{@book.title} was added to your bookself."
-  #   # else
-  #   #   flash[:danger] = "Something went wrong, please try again."
-  #   #   render :new
-  #   # end
-  # end
-
   def create
     @book = Book.find_by(amazon_link: params[:book][:amazon_link]) 
     if @book == nil
@@ -65,9 +26,8 @@ class BooksController < ApplicationController
     end
     
     @book.users << current_user
-    @book.user_books.last.update_attributes!({status: params[:user_book][:status]})
+    @book.user_books.last.update_attributes!(status: params[:user_book][:status])
     @book.user_books.last.save
-    binding.pry
 
     if @book.save
       redirect_to user_path(current_user)
@@ -79,10 +39,12 @@ class BooksController < ApplicationController
   end
 
   def read
-    book_params
-    @book = Book.find_by(id: params[:id])
-    @book.add_to_user(current_user, params[:book][:status])
-
+    @book = Book.find_by(id: params[:book][:id])
+    unless @book.users.include?(current_user)
+      @book.users << current_user
+    end
+    ub = @book.user_books.find_by(user_id: current_user.id)
+    ub.update_attributes!({status: params[:book][:user_book][:status]})
     redirect_to :back
   end
 
