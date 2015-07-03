@@ -49,6 +49,13 @@ class BooksController < ApplicationController
   end
 
   def to_read
+    @book = Book.find_by(id: params[:book][:id])
+    unless @book.users.include?(current_user)
+      @book.users << current_user
+    end
+    ub = @book.user_books.find_by(user_id: current_user.id)
+    ub.update_attributes!({status: params[:book][:user_book][:status]})
+    redirect_to :back 
   end
 
   private

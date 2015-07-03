@@ -13,7 +13,7 @@
             <img class='profile-book img-responsive' src='<%= book.cover_image_link %>'>
           </a>
           <h4><%= link_to "Add to my books", read_path(book: {id: book.id, user_book: {status: "read"}}), method: :post %></h4>
-          <h4><%= link_to "Add to my to-read", to_read_path(id: book.id, status: "to-read"), method: :post %></h4>
+          <h4><%= link_to "Need to read", read_path(book: {id: book.id, user_book: {status: "to-read"}}), method: :post %></h4>
         </div>
       </div>
     <% end %>
