@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   post 'read', to: 'books#read'
   post 'to_read', to: 'books#to_read'
+  post 'delete_book', to: 'user_books#destroy'
 
   resources :books, except: [:edit]
   resources :users, except: [:index, :destroy] do  
