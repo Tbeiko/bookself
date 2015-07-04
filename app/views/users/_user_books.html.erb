@@ -12,9 +12,9 @@
           <a href='<%= book.amazon_link %>'>
             <img class='profile-book img-responsive' src='<%= book.cover_image_link %>'>
           </a>
-          <h4><%= link_to "Add to my books", read_path(book: {id: book.id, user_book: {status: "read"}}), method: :post %></h4>
-          <h4><%= link_to "Need to read", to_read_path(book: {id: book.id, user_book: {status: "to-read"}}), method: :post %></h4>
-          <h4><%= link_to "Remove", delete_book_path(user_book: {book_id: book.id, user_id: current_user.id}), method: :post %></h4>
+          <h4><%= link_to "Add to bookself", read_path(user_book: {book_id: book.id, user_id: current_user.id, status: "read"}), method: :post %></h4>
+          <h4><%= link_to "Add to reading list", read_path(user_book: {book_id: book.id, user_id: current_user.id, status: "to-read"}), method: :post %></h4>
+          <h4><%= link_to "Remove book", delete_book_path(user_book: {book_id: book.id, user_id: current_user.id}), method: :post %></h4>
         </div>
       </div>
     <% end %>

@@ -38,28 +38,10 @@ class BooksController < ApplicationController
     end
   end
 
-  def read
-    change_user_book_status
-  end
-
-  def to_read
-    change_user_book_status
-  end
-
   private
 
     def book_params
       params.require(:book).permit(:title, :authors, :amazon_link, :asin, :cover_image_link, user_books_attributes: [:status])
-    end
-
-    def change_user_book_status
-      @book = Book.find_by(id: params[:book][:id])
-      unless @book.users.include?(current_user)
-        @book.users << current_user
-      end
-      ub = @book.user_books.find_by(user_id: current_user.id)
-      ub.update_attributes!({status: params[:book][:user_book][:status]})
-      redirect_to :back
     end
 
 end
