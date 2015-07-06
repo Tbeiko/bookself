@@ -7,6 +7,6 @@ module ApplicationHelper
   end
 
   def random_color
-    ["red", "blue", "yellow", "green"].sample
+    ["#80b891", "#f89f81", "#586576", "#f0d2a8"].sample
   end
 end

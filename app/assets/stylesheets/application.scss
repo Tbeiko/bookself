@@ -101,10 +101,13 @@ a, a.deco-none {
   height: 100px;
 }
 
-.center-pills { display: inline-block; }
+.center-pills { 
+  display: inline-block;
+}
 
 .all-books {
   font-size: 0;
+  z-index: -10000;
 }
 
 .book-row {
@@ -112,10 +115,89 @@ a, a.deco-none {
     float: none;
 }
 
+.book-row:hover {
+  opacity: 0.5;
+  #book-options{
+    display: block;
+  }
+}
+
+#book-options {
+  margin-top: -150px;
+  display:none;
+}
+
 .profile-book, .search-book {
   vertical-align: bottom;
   padding-top: 15px;
   padding-bottom: 15px;
+}
+
+.follower-card {
+  max-width: 400px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 20px;
+  z-index: 1;
+
+  .col-xs-3 {
+    padding: 5px;
+  }
+
+  #color {
+    height: 100px;
+  }
+
+  #card-info {
+    margin-top: -33px;
+    margin-left: 10px;
+  }
+  .user-photo {
+    height: 66px;
+    width: 66px;
+  }
+
+  img {
+    z-index: -1000;
+  }
+
+  h4 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .name-and-count {
+    width: 100%;
+  }
+
+  #followers-books {
+    z-index: -1000;
+    margin-top: -10px;
+  }
+
+  .list-inline {
+    display: inline-block;
+  float: none;
+ }
+}
+
+.follower-card-hover {
+  opacity: 0.95;
+  text-decoration: none;
+}
+
+#view-profile-card{
+  z-index: 99999;
+  display: block;
+  color: black;
+  text-align: center;
+  background-color: blue;
+  width: 150px;
+  height: 45px;
+  opacity: 1;
+  margin-top: -20px;
+  margin-bottom: 10px;
 }
 
 @media (min-width: 768px) { 
@@ -145,6 +227,11 @@ a, a.deco-none {
 @media (min-width: 992px) {
   #main-container {
     width: 850px;
+  }
+
+  .follower-card-container {
+    margin-right: -30%;
+    width: 100%;
   }
 }
 
