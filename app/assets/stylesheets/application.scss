@@ -10,6 +10,10 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *
+ *
+ *
+ *
  */
 
 @import "bootstrap-sprockets";
@@ -57,6 +61,7 @@ a, a.deco-none {
   margin-left: 5%;
   margin-bottom: 0;
   vertical-allign: middle;
+  color: white;
 }
 
 #nav-item {
@@ -115,16 +120,15 @@ a, a.deco-none {
     float: none;
 }
 
-.book-row:hover {
-  opacity: 0.5;
-  #book-options{
-    display: block;
-  }
+.book-options {
+  display:none;
+  position: absolute;
+  top: 0;
+  color: black;
 }
 
-#book-options {
-  margin-top: -150px;
-  display:none;
+.profile-book {
+  position: relative;
 }
 
 .profile-book, .search-book {
@@ -172,6 +176,10 @@ a, a.deco-none {
 }
 
 .follower-card-hover {
+  opacity: 0.5;
+}
+
+.follower-card:hover {
   opacity: 0.5;
 }
 
