@@ -139,7 +139,8 @@ a, a.deco-none {
   padding-left: 10px;
   padding-right: 10px;
   padding-bottom: 20px;
-  z-index: 1;
+  display: inline-block;
+  float: none;
 
   .col-xs-3 {
     padding: 5px;
@@ -153,13 +154,10 @@ a, a.deco-none {
     margin-top: -33px;
     margin-left: 10px;
   }
+
   .user-photo {
     height: 66px;
     width: 66px;
-  }
-
-  img {
-    z-index: -1000;
   }
 
   h4 {
@@ -167,37 +165,14 @@ a, a.deco-none {
     margin-bottom: 5px;
   }
 
-  .name-and-count {
-    width: 100%;
-  }
-
   #followers-books {
-    z-index: -1000;
+    z-index: 0;
     margin-top: -10px;
   }
-
-  .list-inline {
-    display: inline-block;
-  float: none;
- }
 }
 
 .follower-card-hover {
-  opacity: 0.95;
-  text-decoration: none;
-}
-
-#view-profile-card{
-  z-index: 99999;
-  display: block;
-  color: black;
-  text-align: center;
-  background-color: blue;
-  width: 150px;
-  height: 45px;
-  opacity: 1;
-  margin-top: -20px;
-  margin-bottom: 10px;
+  opacity: 0.5;
 }
 
 @media (min-width: 768px) { 
@@ -229,10 +204,6 @@ a, a.deco-none {
     width: 850px;
   }
 
-  .follower-card-container {
-    margin-right: -30%;
-    width: 100%;
-  }
 }
 
 @media (min-width: 1200px) {

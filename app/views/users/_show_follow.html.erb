@@ -3,16 +3,16 @@
 <section class='all-books follower-card-container' >
   <% if @users.any? %>
     <%= @users.each do |user| %>
-<!--     Each user has a follower-card -->
+
       <div class='col-sm-4 col-xs-12 follower-card'>
         <%= link_to user_path(user) do %>
 
-<!--      Background color on user-cards   -->
+
           <div id='color' style="background-color:<%= random_color %>;">
           </div>
 
           <div id='card-info'>
-<!--        Basic user infomation -->
+
             <img class='img-responsive img-circle user-photo' src="<%= user.image %>"/>
             <h4 class='name-and-count' style='font-weight: bold;'><%= user.first_name + " " + user.last_name%></h4>
             <ul class='list-inline name-and-count' id='followers-books'>
@@ -20,10 +20,9 @@
               <li><h6><%= user.following.count %> followers</h6></li>
             </ul>
 
-<!--           User's first 4 books are showed in follower card  -->
-            <div class='all-books'>
 
-<!--           Shows correct amount of books depending on # user has  -->
+            <div class='all-books'>
+              
               <% if user.books.empty? %>
                 <h3>View Profile</h3>
 
@@ -38,22 +37,15 @@
                 <%= user.books[1..4].each do |book|%>
                 <div class='col-xs-3 book-row'>
                   <img class='img-responsive' src="<%= book.cover_image_link %>"/>
-                  </div>
+                </div>
                 <% end %>
               <% end %>
-
-              
-
-<!--        End of 'all-books' -->
             </div>
-<!--      End of 'card-info' -->
           </div>
-<!--    End of link on user card -->
+          
         <% end %>
-<!--  End of follower-card -->
       </div>
 
-<!-- End of iteration through each user -->
     <% end %>
   <% end %>
 </section>
