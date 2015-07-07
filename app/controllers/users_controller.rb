@@ -12,7 +12,11 @@ class UsersController < ApplicationController
   def show
     case params[:tab]
     when 'books'
-      @books = current_user.same_books(@user)
+      if logged_in?
+        @books = current_user.same_books(@user)
+      else
+        return_books("read")
+      end
     when 'to-read'
       return_books("to-read")
     when 'following'
@@ -26,12 +30,12 @@ class UsersController < ApplicationController
 
   def following
     @title = "Following"
-    @users = @user.following.sort_by {|user| current_user.number_of_same_books(user)}.reverse!
+    @following = @user.following.sort_by {|user| current_user.number_of_same_books(user)}.reverse!
   end
 
   def followers
     @title = "Followers"
-    @users = @user.followers.sort_by {|user| current_user.number_of_same_books(user)}.reverse!
+    @followers = @user.followers.sort_by {|user| current_user.number_of_same_books(user)}.reverse!
   end
 
   private
@@ -41,7 +45,7 @@ class UsersController < ApplicationController
     end
 
     def sort_users_by_followers
-      @users_popular = User.all.sort_by {|user| user.followers.count}.reverse!
+      @popular_users = User.all.sort_by {|user| user.followers.count}.reverse!
     end
 
     def return_books(status)

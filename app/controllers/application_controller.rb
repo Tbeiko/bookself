@@ -31,7 +31,26 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def book_count(user)
+    if logged_in?
+      books = current_user.number_of_same_books(user)
+      if books == 1
+        return "#{books} book in common"
+      else
+        return "#{books} books in common"
+      end
+    else
+      books = user.books.count
+      if books == 1
+        return "#{books} book"
+      else
+        return "#{books} books"
+      end
+    end
 
-  helper_method :current_user, :logged_in?, :require_user, :bad_image?
+  end
+
+
+  helper_method :current_user, :logged_in?, :require_user, :bad_image?, :book_count
 
 end

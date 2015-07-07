@@ -1,7 +1,7 @@
-<% if @books.empty? && tab == "books" %>
+<% if @books.empty? && params[:tab] == "books" %>
   <h2>Hey, seems like you don't have any books.</h2>
   <h3><%= link_to "Why not add one?", new_book_path %></h3>
-<% elsif @books.empty? && tab == "to-read" %>
+<% elsif @books.empty? && params[:tab] == "to-read" %>
   <h2>Hey, seems like you don't have anything you want to read.</h2>
   <h3><%= link_to "Why not see what others are reading", '/explore' %></h3>
 <% else %>
@@ -13,9 +13,12 @@
             <img class='profile-book img-responsive' src='<%= book.cover_image_link %>'>
           </a>
           <div id='book-options'>
-            <h4><%= link_to "Add to bookself", read_path(user_book: {book_id: book.id, user_id: current_user.id, status: "read"}), method: :post %></h4>
-            <h4><%= link_to "Add to reading list", read_path(user_book: {book_id: book.id, user_id: current_user.id, status: "to-read"}), method: :post %></h4>
-            <h4><%= link_to "Remove book", delete_book_path(user_book: {book_id: book.id, user_id: current_user.id}), method: :post %></h4>
+            <% unless !logged_in? %>
+              <h4><%= link_to "Add to bookself", read_path(user_book: {book_id: book.id, user_id: current_user.id, status: "read"}), method: :post %></h4>
+              <h4><%= link_to "Add to reading list", read_path(user_book: {book_id: book.id, user_id: current_user.id, status: "to-read"}), method: :post %></h4>
+              <h4><%= link_to "Remove book", delete_book_path(user_book: {book_id: book.id, user_id: current_user.id}), method: :post %></h4>
+            <% end %>
+              <h4><%= link_to "Buy Book", book.amazon_link %></h4>
           </div>
         </div>
       </div>

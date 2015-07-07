@@ -115,6 +115,20 @@ h2 {
   height: 600px;
 }
 
+#user-search {
+  background-color: yellow;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#popular-title {
+  margin-top: 40px;
+}
+
+.user-results {
+  width: 75%;
+}
+
 @media (min-width: 768px) { 
   #background-photo-home {
     height: 600px;
@@ -127,7 +141,19 @@ h2 {
 
   #carousel-example-generic {
     height: 600px;
-    background-color: #2E8A2E;
+  }
+
+  .carousel-name {
+    margin-top: -300px;
+  }
+
+  .carousel-see-bookshelf {
+    margin-top: 100px;
+  }
+
+  .carousel-image {
+    display: center-block;
+    max-height: 600px;
   }
 
 }
