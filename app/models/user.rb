@@ -16,6 +16,7 @@ class User <ActiveRecord::Base
   has_many :followers, through: :passive_relationships, source: :follower
 
   validates_presence_of :first_name, :last_name
+  validates :email, uniqueness: true
 
 
   def self.from_omniauth(auth)
@@ -30,7 +31,7 @@ class User <ActiveRecord::Base
         user.token = auth.credentials.token
         user.expires_at = Time.at(auth.credentials.expires_at)
       elsif auth.provider == "identity"
-        user.slug = "#{user.first_name} + #{user.last_name}"
+        user.slug = "#{user.first_name}"
       end
       user.save!
     end

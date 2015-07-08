@@ -2,12 +2,14 @@ Rails.application.routes.draw do
 
   root 'static_pages#index'
 
-  get '/login', to: 'sessions#new'
   get 'auth/:provider/callback', to: 'sessions#create'
   post 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
-  resources :identities
+
+  get '/login', to: 'sessions#new'
+  get 'auth/identity/', to: redirect('/login')
+  resources :identities, only: [:new, :create]
   
   get '/search', to: 'books#search'
   post '/search', to: 'books#search'
@@ -18,19 +20,14 @@ Rails.application.routes.draw do
   post 'delete_book', to: 'user_books#destroy'
 
 
-  resources :books, except: [:show, :edit]
+  resources :books, except: [:show, :edit, :update, :destroy]
 
-  resources :users, except: [:index, :destroy] do  
+  resources :users, except: [:index, :destroy, :edit] do  
     member do
       resources :relationships, only: [:create, :destroy]
       get :following, :followers
     end
   end
-  
-
- 
-
-
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

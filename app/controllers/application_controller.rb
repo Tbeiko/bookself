@@ -19,6 +19,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_admin!
+    unless current_user && current_user.email == "t.beiko@live.ca"
+      flash[:danger] = "Oops! You're not allowed here."
+      redirect_to root_path
+    end
+  end
+
   def bad_image?(n)
     if @covers.items[n].get('LargeImage/URL').nil?
       true
@@ -61,6 +68,6 @@ class ApplicationController < ActionController::Base
   end
 
 
-  helper_method :current_user, :logged_in?, :require_user, :bad_image?, :book_count, :current_user_profile?
+  helper_method :current_user, :logged_in?, :require_user, :bad_image?, :book_count, :current_user_profile?, :require_admin!
 
 end

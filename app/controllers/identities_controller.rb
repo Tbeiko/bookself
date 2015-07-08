@@ -1,4 +1,6 @@
 class IdentitiesController < ApplicationController
+  before_action :require_admin!
+
   def new
     @identity = env['omniauth.identity']
   end
