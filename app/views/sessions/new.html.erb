@@ -1,0 +1,8 @@
+<h1>Please login</h1>
+
+<%= bootstrap_form_tag url: "/auth/identity/callback" do |f| %>
+  <%= f.alert_message "Please fix the errors below." %>
+  <%= f.text_field :auth_key, label: "Email" %>
+  <%= f.password_field :password %>
+  <%= f.submit "Login" %>
+<% end %>

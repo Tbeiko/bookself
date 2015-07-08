@@ -8,9 +8,15 @@ gem 'ruby-hmac', '~> 0.3'
 
 # OmniAuth for FB Login
 gem 'omniauth-facebook'
+# And for those who don't have it.
+gem 'omniauth-identity'
+
+# Bycrypt for secure password
+gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Bootstrap for looks
 gem 'bootstrap-sass', '~> 3.3.5'
+gem 'bootstrap_form'
 
 # Evaluate Image Size
 gem 'fastimage'
@@ -53,9 +59,6 @@ gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

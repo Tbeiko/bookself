@@ -2,9 +2,13 @@ Rails.application.routes.draw do
 
   root 'static_pages#index'
 
+  get '/login', to: 'sessions#new'
   get 'auth/:provider/callback', to: 'sessions#create'
+  post 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
+  resources :identities
+  
   get '/search', to: 'books#search'
   post '/search', to: 'books#search'
 
@@ -13,7 +17,9 @@ Rails.application.routes.draw do
   post 'read', to: 'user_books#create'
   post 'delete_book', to: 'user_books#destroy'
 
-  resources :books, except: [:edit]
+
+  resources :books, except: [:show, :edit]
+
   resources :users, except: [:index, :destroy] do  
     member do
       resources :relationships, only: [:create, :destroy]

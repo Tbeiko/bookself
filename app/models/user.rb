@@ -1,4 +1,5 @@
 class User <ActiveRecord::Base
+  # Need to fix slug when multiple login sources (FB + Oauth Identity) !!!
   include Slugable
   slugable_column :first_name
   
@@ -14,6 +15,8 @@ class User <ActiveRecord::Base
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
+  validates_presence_of :first_name, :last_name
+
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -22,9 +25,13 @@ class User <ActiveRecord::Base
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
       user.email = auth.info.email
-      user.image = auth.info.image + "?type=large"
-      user.token = auth.credentials.token
-      user.expires_at = Time.at(auth.credentials.expires_at)
+      if auth.provider == "facebook"
+        user.image = auth.info.image + "?type=large"
+        user.token = auth.credentials.token
+        user.expires_at = Time.at(auth.credentials.expires_at)
+      elsif auth.provider == "identity"
+        user.slug = "#{user.first_name} + #{user.last_name}"
+      end
       user.save!
     end
   end

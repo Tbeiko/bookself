@@ -2,9 +2,6 @@ class BooksController < ApplicationController
   before_action :require_user, only: [:new, :create,]
   before_action :new, only: [:search]
 
-  def show
-  end
-
   def search
     # Amazon API
     search_term = params[:book_info]

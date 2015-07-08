@@ -27,9 +27,11 @@
                       read_path(user_book: {book_id: book.id, user_id: current_user.id, status: "read"}),method: :post %></h5>
               <h5><%= link_to "Add to reading list",
                       read_path(user_book: {book_id: book.id, user_id: current_user.id, status: "to-read"}), method: :post %></h5>
-              <h5><%= link_to "Remove book",
-                      delete_book_path(user_book: {book_id: book.id, user_id: current_user.id}), 
-                        method: :post %></h5>
+              <% if current_user_profile? %>
+                <h5><%= link_to "Remove book",
+                        delete_book_path(user_book: {book_id: book.id, user_id: current_user.id}), 
+                          method: :post %></h5>
+              <% end %>
             <% end %>
 
             <h5><%= link_to "Buy Book", book.amazon_link %></h5>

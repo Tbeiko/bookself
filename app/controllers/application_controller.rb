@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :null_session
 
   def logged_in? 
     !!current_user
@@ -22,9 +22,9 @@ class ApplicationController < ActionController::Base
   def bad_image?(n)
     if @covers.items[n].get('LargeImage/URL').nil?
       true
-    elsif (FastImage.size(@covers.items[n].get('LargeImage/URL'))[0]).nil?
+    elsif (FastImage.size(@covers.items[n].get('LargeImage/URL'))).nil?
       true
-    elsif ((FastImage.size(@covers.items[n].get('LargeImage/URL'))[0]) < 200)
+    elsif (FastImage.size(@covers.items[n].get('LargeImage/URL'))[0]) < 200
       true
     else
       false
@@ -50,7 +50,17 @@ class ApplicationController < ActionController::Base
 
   end
 
+  def current_user_profile?
+    if logged_in? && params[:id] == current_user.slug
+      true
+    elsif logged_in? && !params[:user_book].nil? && params[:user_book][:user_id] == current_user.id.to_s
+      true
+    else
+      false
+    end
+  end
 
-  helper_method :current_user, :logged_in?, :require_user, :bad_image?, :book_count
+
+  helper_method :current_user, :logged_in?, :require_user, :bad_image?, :book_count, :current_user_profile?
 
 end

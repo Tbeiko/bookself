@@ -23,7 +23,4 @@ class UserBooksController < ApplicationController
     params.require(:user_book).permit(:user_id, :book_id, :status)
   end
 
-  def current_user_profile?
-    logged_in? && params[:user_book][:user_id] == current_user.id.to_s
-  end
 end

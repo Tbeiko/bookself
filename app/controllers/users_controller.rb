@@ -7,7 +7,6 @@ class UsersController < ApplicationController
     @searched_users = User.search(params[:search])
     render :layout => 'landing'
   end
-
   
   def show
     case params[:tab]
@@ -26,6 +25,14 @@ class UsersController < ApplicationController
     else
       return_books("read")
     end
+  end
+
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.create(user_params)
   end
 
   def following
@@ -56,6 +63,10 @@ class UsersController < ApplicationController
         @books << book
       end
       @books
+    end
+
+    def user_params
+      params.require(:user).permit(:first_name, :last_name, :password, :password_confirmation, :image)
     end
 
 end
