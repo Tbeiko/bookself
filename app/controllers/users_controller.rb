@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show]
+  before_action :set_user, only: [:show, :update, :edit]
   before_action :require_user, only: [:edit, :following, :followers]
   before_action :sort_users_by_followers, only: [:index]
 
@@ -35,6 +35,28 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
   end
 
+  def edit
+    unless @user.provider == "identity"
+      redirect_to root_path
+      flash[:danger] = "Oops, you're not allowed here."
+    end
+  end
+
+  def update
+    unless @user.provider == "identity"
+      redirect_to root_path
+      flash[:danger] = "Oops, you're not allowed here."
+    end
+    if @user.update(user_params)
+      @user.image = "#{@user.avatar.url(:medium)}"
+      @user.save
+      flash[:notice] = "Your profile was updated successfully."
+      redirect_to user_path
+    else
+      render :edit
+    end
+  end
+
   def following
     @title = "Following"
     @following = @user.following.sort_by {|user| current_user.number_of_same_books(user)}.reverse!
@@ -66,7 +88,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :password, :password_confirmation, :image)
+      params.require(:user).permit(:first_name, :last_name, :password, :password_confirmation, :image, :avatar)
     end
 
 end

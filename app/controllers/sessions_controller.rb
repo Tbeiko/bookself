@@ -3,10 +3,11 @@ class SessionsController < ApplicationController
 
   def new
   end
+
   def create
     user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = user.id
-    if user.save!
+    if user
       redirect_to user_path(current_user)
     else 
       redirect_to :back

@@ -2,6 +2,7 @@ class IdentitiesController < ApplicationController
   before_action :require_admin!
 
   def new
+    binding.pry
     @identity = env['omniauth.identity']
   end
 
@@ -16,6 +17,6 @@ class IdentitiesController < ApplicationController
 
   private
     def idendity_params
-      params.require(:identity).permit(:name, :first_name, :last_name, :image, :email, :password_digest)
+      params.require(:identity).permit(:name, :first_name, :last_name, :email, :password_digest)
     end
 end

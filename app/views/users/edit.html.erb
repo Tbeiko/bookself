@@ -1,0 +1,6 @@
+<h1>Add a picture to your profile</h1>
+
+<%= form_for @user, :html => { :multipart => true } do |form| %>
+  <%= form.file_field :avatar %>
+  <%= form.submit "Submit" , class: 'btn btn-success' %>
+<% end %>

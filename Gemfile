@@ -18,6 +18,8 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'bootstrap_form'
 
+# Upload user photos
+gem "paperclip", "~> 4.3"
 # Evaluate Image Size
 gem 'fastimage'
 
