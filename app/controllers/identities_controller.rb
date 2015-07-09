@@ -2,7 +2,6 @@ class IdentitiesController < ApplicationController
   before_action :require_admin!
 
   def new
-    binding.pry
     @identity = env['omniauth.identity']
   end
 
