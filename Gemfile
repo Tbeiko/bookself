@@ -20,6 +20,8 @@ gem 'bootstrap_form'
 
 # Upload user photos
 gem "paperclip", "~> 4.3"
+# Save photos on S3
+gem 'aws-sdk', '~> 1.6'
 # Evaluate Image Size
 gem 'fastimage'
 
