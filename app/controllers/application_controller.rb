@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_admin!
-    unless current_user && current_user.email == "t.beiko@live.ca"
+    unless current_user && ((current_user.email == "t.beiko@live.ca") || (current_user.email == "catherinelgrs@gmail.com") )
       flash[:danger] = "Oops! You're not allowed here."
       redirect_to root_path
     end
