@@ -23,7 +23,7 @@ class User <ActiveRecord::Base
                     :default_url => "/images/:style/missing.png"
   has_attached_file :download,
                     :storage => :s3,
-                    :s3_credentials => {:bucket => "elasticbeanstalk-us-east-1-209283199602", :access_key_id => ENV['AWS_ACCESS_KEY_ID'], :secret_access_key => ENV['AWS_SECRET_KEY']}
+                    :s3_credentials => {:bucket => "bookself-avatars", :access_key_id => ENV['AWS_ACCESS_KEY_ID'], :secret_access_key => ENV['AWS_SECRET_KEY']}
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   
   def self.from_omniauth(auth)
