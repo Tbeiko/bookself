@@ -32,9 +32,8 @@ class User <ActiveRecord::Base
         user.image = auth.info.image + "?type=large"
         user.token = auth.credentials.token
         user.expires_at = Time.at(auth.credentials.expires_at)
-      elsif auth.provider == "identity"
-        user.slug = "#{user.first_name}"
       end
+      user.slug = user.generate_slug
       user.save!
     end
   end
