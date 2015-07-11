@@ -121,15 +121,21 @@ h2 {
   padding-bottom: 20px;
 }
 
-#popular-title {
-  margin-top: 40px;
-}
-
 .user-results {
   width: 75%;
 }
 
+#popular-title {
+  margin-top: 40px;
+}
+
+.follower-card-container {
+  font-size: 0;
+  z-index: -10000;
+}
+
 @media (min-width: 768px) { 
+
   #background-photo-home {
     height: 600px;
     background-color: #2E8A2E;
@@ -154,6 +160,11 @@ h2 {
   .carousel-image {
     display: center-block;
     max-height: 600px;
+  }
+
+  .follower-card-container {
+    margin-left: 5%;
+    margin-right: 5%;
   }
 
 }

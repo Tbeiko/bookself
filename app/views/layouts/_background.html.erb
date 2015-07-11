@@ -1,1 +1,8 @@
-<div style="background-color:<%= random_color %>;height:100%;"></div>
+<div class="container-fluid">
+  <% if @user.nil? || @user.cover.url.empty? %>
+    <div class='background-photo'  style="background-color:<%= random_color %>;"></div>
+  <% else %>
+    <img class='img-responsive background-photo' src="<%= @user.cover(:original) %>"/>
+  <% end %>
+</div>
+

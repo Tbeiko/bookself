@@ -31,13 +31,6 @@ a, a.deco-none {
   background: none;
 }
 
-#background-photo {
-  position: absolute;
-  width: 100%;
-  z-index: -100;
-  height: 300px;
-}
-
 #header{
   width: 100%;
   background: none;
@@ -97,12 +90,15 @@ a, a.deco-none {
   font-weight: bold;
 }
 
-#main-container {
-  padding-top: 90px;
+.background-photo {
+  position: absolute;
+  width: 100%;
+  z-index: -100;
+  height: 300px;
 }
 
 #profile-photo {
-  margin-top: 160px;
+  margin-top: 250px;
   width: 100px;
   height: 100px;
 }
@@ -114,6 +110,8 @@ a, a.deco-none {
 .all-books {
   font-size: 0;
   z-index: -10000;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .book-row {
@@ -174,6 +172,10 @@ a, a.deco-none {
     z-index: 0;
     margin-top: -10px;
   }
+  .card-books {
+    font-size: 0;
+    z-index: -10000;
+  }
 }
 
 .follower-card-hover {
@@ -184,16 +186,22 @@ a, a.deco-none {
   opacity: 0.5;
 }
 
+
 @media (min-width: 768px) { 
 
-  #background-photo {
+  .background-photo {
     height: 400px;
   }
 
   #profile-photo {
-    margin-top: 247px;
+    margin-top: 337px;
     width: 126px;
     height: 126px;
+  }
+
+  .all-books {
+    margin-left: 15%;
+    margin-right: 15%;
   }
 
   .book-row {
@@ -201,30 +209,31 @@ a, a.deco-none {
     padding-right: -5px;
   }
 
-  #main-container {
-    width: 650px;
-  }
-
-
 }
 
 @media (min-width: 992px) {
-  #main-container {
-    width: 850px;
+
+  .background-photo {
+    height: 440px;
   }
 
+  #profile-photo {
+    margin-top: 377px;
+    width: 126px;
+    height: 126px;
+  }
 }
 
 @media (min-width: 1200px) {
 
-  #profile-photo {
-    margin-top: 235px;
-    width: 150px;
-    height: 150px;
+  .background-photo {
+    height: 480px;
   }
 
-  #main-container {
-    width: 900px;
+  #profile-photo {
+    margin-top: 405px;
+    width: 150px;
+    height: 150px;
   }
 
   .profile-book {

@@ -1,9 +1,5 @@
 <div class='user-information'>
 
-  <% unless @user.cover.url.empty? %>
-    <img src="<%= @user.cover(:original) %>"/>
-  <% end %>
-
   <div class="text-center">
     <img class='img-circle' id='profile-photo' src='<%= @user.image %>'/>
     <h3><%= @user.first_name%> <%=@user.last_name%> </h3>
@@ -16,7 +12,7 @@
     <h5><%= link_to "ADD A BOOK", new_book_path %></h5>
     <% end %>
   </div>
-</div>
+
 
 <div class="col-md-12 text-center">
   <ul class='nav nav-tabs center-pills'>
@@ -32,15 +28,15 @@
   </ul>
 </div>
 
-<% if params[:tab].nil? %>
-  <%= render 'user_books', tab: "books"%>
-<% elsif params[:tab] == 'to-read' %>
-  <%= render 'user_books', tab: "to-read" %>
-<% elsif params[:tab] == 'followers' %>
-  <%= render 'user_cards', users: @followers %>
-<% elsif params[:tab] == 'following' %>
-  <%= render 'user_cards', users: @following %>
-<% elsif params[:tab] == 'books' %>
-  <%= render 'user_books' %>
-<% end %>
-
+  <% if params[:tab].nil? %>
+    <%= render 'user_books', tab: "books"%>
+  <% elsif params[:tab] == 'to-read' %>
+    <%= render 'user_books', tab: "to-read" %>
+  <% elsif params[:tab] == 'followers' %>
+    <%= render 'user_cards', users: @followers %>
+  <% elsif params[:tab] == 'following' %>
+    <%= render 'user_cards', users: @following %>
+  <% elsif params[:tab] == 'books' %>
+    <%= render 'user_books' %>
+  <% end %>
+</div>
