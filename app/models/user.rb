@@ -18,10 +18,10 @@ class User <ActiveRecord::Base
 
   has_attached_file :avatar, 
                     :styles => { :medium => "200x200>", :thumb => "100x100>" }, 
-                    :default_url => "/images/:style/missing.png"
+                    :default_url => ""
   has_attached_file :cover, 
                     :styles => { :medium => "768x", :small => "400x" }, 
-                    :default_url => "/images/:style/missing.png"
+                    :default_url => ""
   has_attached_file :download,
                     :storage => :s3,
                     :s3_credentials => {:bucket => "bookself-avatars", :access_key_id => ENV['AWS_ACCESS_KEY_ID'], :secret_access_key => ENV['AWS_SECRET_KEY']}

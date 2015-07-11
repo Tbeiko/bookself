@@ -1,6 +1,6 @@
 <div class='user-information'>
 
-  <% unless @user.cover.nil? %>
+  <% unless @user.cover.url.empty? %>
     <img src="<%= @user.cover(:original) %>"/>
   <% end %>
 
