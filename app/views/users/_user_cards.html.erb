@@ -6,7 +6,12 @@
         <%= link_to user_path(user) do %>
 
 
-          <div id='color' style="background-color:<%= random_color %>;">
+          <div id='color'>
+            <% if user.cover.url.empty? %>
+            <div style="background-color:<%= random_color %>; height:100px;"></div>
+          <% else %>
+            <img class='img-responsive' id='card-image' src="<%= user.cover(:small) %>"/>
+          <% end %>
           </div>
 
           <div id='card-info'>
