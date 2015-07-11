@@ -30,7 +30,9 @@
   </ul>
 </div>
 
-  <% unless @user.provider == 'identity' %>
+  <% if @user.provider == 'identity' %>
+    <%= render 'user_books'%>
+  <% else %>
     <% if params[:tab].nil? %>
       <%= render 'user_books', tab: "books"%>
     <% elsif params[:tab] == 'to-read' %>
