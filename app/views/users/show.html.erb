@@ -3,6 +3,10 @@
   <div class="text-center">
     <img class='img-circle' id='profile-photo' src='<%= @user.image %>'/>
 
+    <div class='container'>
+      <%= render 'layouts/messages' %> 
+    </div>
+
     <h3><%= @user.first_name%> <%=@user.last_name%> </h3>
 
     <h5><%= @user.description unless @user.description.nil? %></h5>

@@ -1,6 +1,6 @@
 <% flash.each do |name, msg| %>
   <% if msg.is_a?(String) %>
-    <div class="alert bg-<%= name %>">
+    <div class="alert bg-<%= name %>" style='margin-top:20px;'>
       <a class="close" data-dismiss="alert">&#215;</a>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
     </div>
