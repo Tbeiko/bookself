@@ -1,3 +1,5 @@
+<div class='container' style='margin-top: 500px;'>
+
 <h1>Update your profile</h1>
 
 <%= form_for @user, :html => { :multipart => true } do |form| %>
@@ -5,5 +7,10 @@
   <%= form.file_field :avatar %>
   <h4>Cover Picture</h4>
   <%= form.file_field :cover %>
+  <h4>Description</h4>
+  <%= form.text_field :description, class: 'col-sm-8' %>
+  </br></br>
   <%= form.submit "Submit" , class: 'btn btn-success' %>
 <% end %>
+
+</div>
