@@ -78,6 +78,9 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Amazon S3 settings for Paperclip uploads
+  Paperclip::Attachment.default_options[:url] = 'http://s3-us-west-2.amazonaws.com/bookself-avatars'
+  Paperclip::Attachment.default_options[:path] = '/:class/:attachment/:id_partition/:style/:filename'
+  Paperclip::Attachment.default_options[:s3_host_name] = 's3-us-west-2.amazonaws.com'
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_protocol => 'http',

@@ -1,5 +1,9 @@
 <div class='user-information'>
 
+  <% unless @user.cover.nil? %>
+    <img src="<%= @user.cover(:original) %>"/>
+  <% end %>
+
   <div class="text-center">
     <img class='img-circle' id='profile-photo' src='<%= @user.image %>'/>
     <h3><%= @user.first_name%> <%=@user.last_name%> </h3>

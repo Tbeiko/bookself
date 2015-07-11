@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       @user.image = "#{@user.avatar.url(:medium)}"
       @user.save
-      flash[:notice] = "Your profile was updated successfully."
+      flash[:success] = "Your profile was updated successfully."
       redirect_to user_path
     else
       render :edit
@@ -88,7 +88,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :password, :password_confirmation, :image, :avatar, :slug)
+      params.require(:user).permit(:first_name, :last_name, :password, :password_confirmation, :image, :avatar, :cover, :slug)
     end
 
 end
