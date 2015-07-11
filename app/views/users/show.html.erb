@@ -19,24 +19,28 @@
       <li class='<%= 'active' if params[:tab].nil? %> tab'>
         <%= link_to "BOOKSHELF", user_path(@user) %>
       </li>
-      <li class='<%= 'active' if params[:tab] == 'to-read' %> tab'>
-        <%= link_to "TO READ", user_path(@user, tab: 'to-read') %>
-      </li>  
-      <li class='<%= 'active' if params[:tab] == 'following' %> tab'>
-        <%= link_to "FOLLOWING (#{@user.following.count})", user_path(@user, tab: 'following') %>
-      </li>  
+      <% unless @user.provider == 'identity' %>
+        <li class='<%= 'active' if params[:tab] == 'to-read' %> tab'>
+          <%= link_to "TO READ", user_path(@user, tab: 'to-read') %>
+        </li>  
+        <li class='<%= 'active' if params[:tab] == 'following' %> tab'>
+          <%= link_to "FOLLOWING (#{@user.following.count})", user_path(@user, tab: 'following') %>
+        </li>  
+      <% end %>
   </ul>
 </div>
 
-  <% if params[:tab].nil? %>
-    <%= render 'user_books', tab: "books"%>
-  <% elsif params[:tab] == 'to-read' %>
-    <%= render 'user_books', tab: "to-read" %>
-  <% elsif params[:tab] == 'followers' %>
-    <%= render 'user_cards', users: @followers %>
-  <% elsif params[:tab] == 'following' %>
-    <%= render 'user_cards', users: @following %>
-  <% elsif params[:tab] == 'books' %>
-    <%= render 'user_books' %>
+  <% unless @user.provider == 'identity' %>
+    <% if params[:tab].nil? %>
+      <%= render 'user_books', tab: "books"%>
+    <% elsif params[:tab] == 'to-read' %>
+      <%= render 'user_books', tab: "to-read" %>
+    <% elsif params[:tab] == 'followers' %>
+      <%= render 'user_cards', users: @followers %>
+    <% elsif params[:tab] == 'following' %>
+      <%= render 'user_cards', users: @following %>
+    <% elsif params[:tab] == 'books' %>
+      <%= render 'user_books' %>
+    <% end %>
   <% end %>
 </div>
