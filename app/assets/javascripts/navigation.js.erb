@@ -3,11 +3,11 @@
 $(document).on("scroll", function(){
   if
       ($(document).scrollTop() > $("#background-photo").height() ){
-      $("#header").addClass("shrink");
-      $("#header").css("background", "white");
-      $("#header").css("cursor", "pointer")
-      $("#header").css("color", "black");
-      $("#header").css("box-shadow", "0 0px 5px rgba(0, 0, 0, 0.5)");
+        $("#header").addClass("shrink");
+        $("#header").css("background", "white");
+        $("#header").css("cursor", "pointer")
+        $("#header").css("color", "black");
+        $("#header").css("box-shadow", "0 0px 5px rgba(0, 0, 0, 0.5)");
       click_to_show_header();
   }
   else
@@ -31,7 +31,7 @@ function click_to_show_header() {
 
 $(document).on("scroll", function(){
   if
-      ($(document).scrollTop() > $("#background-photo-home").height() ){
+      ($(document).scrollTop() > $(".big-photo").height() ){
       $("#header-home").addClass("shrink");
       $("#header-home").css("background", "white");
       $("#header-home").css("color", "black");

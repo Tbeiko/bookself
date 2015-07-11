@@ -1,9 +1,6 @@
 class BooksController < ApplicationController
-  before_action :require_user, only: [:new, :create,]
+  before_action :require_user, only: [:new, :create]
   before_action :new, only: [:search]
-
-  def show
-  end
 
   def search
     # Amazon API
@@ -26,10 +23,8 @@ class BooksController < ApplicationController
     end
     
     @book.users << current_user
-    # @book.user_books.last.update_attributes!
-    @book.user_books.last.update_attributes!({status: params[:book][:status]})
+    @book.user_books.last.update_attributes!(status: params[:user_book][:status])
     @book.user_books.last.save
-    binding.pry
 
     if @book.save
       redirect_to user_path(current_user)

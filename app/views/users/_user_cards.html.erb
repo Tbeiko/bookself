@@ -1,0 +1,53 @@
+<section class='all-books follower-card-container' >
+  <% if !users.nil? %>
+    <%= users.each do |user| %>
+
+      <div class='col-sm-4 col-xs-12 follower-card'>
+        <%= link_to user_path(user) do %>
+
+
+          <div id='color' style="background-color:<%= random_color %>;">
+          </div>
+
+          <div id='card-info'>
+
+            <img class='img-responsive img-circle user-photo' src="<%= user.image %>"/>
+            <h4 class='name-and-count' style='font-weight: bold;'><%= user.first_name + " " + user.last_name%></h4>
+            <ul class='list-inline name-and-count' id='followers-books'>
+              <li><h6><%= book_count(user) %></h6></li>
+              <li><h6><%= user.followers.count %> followers</h6></li>
+            </ul>
+
+
+            <div class='all-books'>
+              
+              <% if user.books.empty? %>
+                <% 4.times do %>
+                  <div class='col-xs-3 book-row'>
+                    <img class='img-responsive' src="/assets/images/no-book.png"/>
+                  </div>
+                <% end %>
+
+              <% elsif user.books.count < 4 %>
+                <%= user.books.each do |book|%>
+                  <div class='col-xs-3 book-row'>
+                    <img class='img-responsive' src="<%= book.cover_image_link %>"/>
+                  </div>
+                <% end %>
+
+              <% else %>
+                <%= user.books[1..4].each do |book|%>
+                <div class='col-xs-3 book-row'>
+                  <img class='img-responsive' src="<%= book.cover_image_link %>"/>
+                </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+          
+        <% end %>
+      </div>
+
+    <% end %>
+  <% end %>
+</section>

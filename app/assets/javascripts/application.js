@@ -11,10 +11,12 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
+//= require jquery-ui
 //= require_tree .
 //= require bootstrap-sprockets
+//= require turbolinks
 
 $(function() {
   $("#users th a, #users .pagination a").live("click", function() {

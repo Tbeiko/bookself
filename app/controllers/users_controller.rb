@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show]
+  before_action :set_user, only: [:show, :update, :edit]
   before_action :require_user, only: [:edit, :following, :followers]
   before_action :sort_users_by_followers, only: [:index]
 
@@ -7,12 +7,15 @@ class UsersController < ApplicationController
     @searched_users = User.search(params[:search])
     render :layout => 'landing'
   end
-
   
   def show
     case params[:tab]
     when 'books'
-      @books = current_user.same_books(@user)
+      if logged_in?
+        @books = current_user.same_books(@user)
+      else
+        return_books("read")
+      end
     when 'to-read'
       return_books("to-read")
     when 'following'
@@ -24,14 +27,44 @@ class UsersController < ApplicationController
     end
   end
 
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.create(user_params)
+  end
+
+  def edit
+    unless @user.provider == "identity"
+      redirect_to root_path
+      flash[:danger] = "Oops, you're not allowed here."
+    end
+  end
+
+  def update
+    unless @user.provider == "identity"
+      redirect_to root_path
+      flash[:danger] = "Oops, you're not allowed here."
+    end
+    if @user.update(user_params)
+      @user.image = "#{@user.avatar.url(:medium)}"
+      @user.save
+      flash[:notice] = "Your profile was updated successfully."
+      redirect_to user_path
+    else
+      render :edit
+    end
+  end
+
   def following
     @title = "Following"
-    @users = @user.following.sort_by {|user| current_user.number_of_same_books(user)}.reverse!
+    @following = @user.following.sort_by {|user| current_user.number_of_same_books(user)}.reverse!
   end
 
   def followers
     @title = "Followers"
-    @users = @user.followers.sort_by {|user| current_user.number_of_same_books(user)}.reverse!
+    @followers = @user.followers.sort_by {|user| current_user.number_of_same_books(user)}.reverse!
   end
 
   private
@@ -41,17 +74,21 @@ class UsersController < ApplicationController
     end
 
     def sort_users_by_followers
-      @users_popular = User.all.sort_by {|user| user.followers.count}.reverse!
+      @popular_users = User.all.sort_by {|user| user.followers.count}.reverse!
     end
 
     def return_books(status)
       @books = []
-      user_books = @user.user_books.order('user_books.created_at desc').where(status: status)
+      user_books = @user.user_books.order('user_books.updated_at desc').where(status: status)
       user_books.each do |ub|
         book = Book.find_by(id: ub.book_id)
         @books << book
       end
       @books
+    end
+
+    def user_params
+      params.require(:user).permit(:first_name, :last_name, :password, :password_confirmation, :image, :avatar, :slug)
     end
 
 end

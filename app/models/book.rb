@@ -9,6 +9,4 @@ class Book <ActiveRecord::Base
     self.user_books.last.save
   end
 
-  private
-
 end

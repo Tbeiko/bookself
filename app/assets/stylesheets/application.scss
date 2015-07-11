@@ -10,8 +10,13 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *
+ *
+ *
+ *
  */
 
+@import "rails_bootstrap_forms";
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "fonts";
@@ -31,7 +36,6 @@ a, a.deco-none {
   width: 100%;
   z-index: -100;
   height: 300px;
-  background-color: yellow;
 }
 
 #header{
@@ -58,6 +62,7 @@ a, a.deco-none {
   margin-left: 5%;
   margin-bottom: 0;
   vertical-allign: middle;
+  color: white;
 }
 
 #nav-item {
@@ -102,15 +107,29 @@ a, a.deco-none {
   height: 100px;
 }
 
-.center-pills { display: inline-block; }
+.center-pills { 
+  display: inline-block;
+}
 
 .all-books {
   font-size: 0;
+  z-index: -10000;
 }
 
 .book-row {
     display: inline-block;
     float: none;
+}
+
+.book-options {
+  display:none;
+  position: absolute;
+  top: 0;
+  color: black;
+}
+
+.profile-book {
+  position: relative;
 }
 
 .profile-book, .search-book {
@@ -119,11 +138,56 @@ a, a.deco-none {
   padding-bottom: 15px;
 }
 
+.follower-card {
+  max-width: 400px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 20px;
+  display: inline-block;
+  float: none;
+
+  .col-xs-3 {
+    padding: 5px;
+  }
+
+  #color {
+    height: 100px;
+  }
+
+  #card-info {
+    margin-top: -33px;
+    margin-left: 10px;
+  }
+
+  .user-photo {
+    height: 66px;
+    width: 66px;
+  }
+
+  h4 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  #followers-books {
+    z-index: 0;
+    margin-top: -10px;
+  }
+}
+
+.follower-card-hover {
+  opacity: 0.5;
+}
+
+.follower-card:hover {
+  opacity: 0.5;
+}
+
 @media (min-width: 768px) { 
 
   #background-photo {
     height: 400px;
-    background-color: yellow;
   }
 
   #profile-photo {
@@ -148,6 +212,7 @@ a, a.deco-none {
   #main-container {
     width: 850px;
   }
+
 }
 
 @media (min-width: 1200px) {

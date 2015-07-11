@@ -1,23 +1,20 @@
 <%= render 'carousel' %>
 
-<%= form_tag '/explore', :method => 'get', :id => "users_search" do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
+<div id='user-search'>
+  <form action='/explore' class='navbar-form form-inline'>
+    <div class='form-group col-xs-9 col-xs-offset-1'>
+      <input class='form-control' name='search' placeholder="Find someone's bookshelf" style="width: 100%;" type='text'>
+    </div>
+      <button class='btn btn-primary col-xs-offset-1 col-sm-offset-0' type='submit'>Search</button>
+  </form>
+</div>
+
+<div class="container user-results">
   <div id="users">
     <%= render 'users_search' unless @searched_users.nil? %>
   </div>
-<% end %>
 
-<h2>Here are the popular users</h2>
+  <h4 class='text-center' id="popular-title">POPULAR BOOKSHELVES</h4>
 
-<% @users_popular[1..10].each do |user| %>
-    <%= link_to user_path(user) do %>
-      <ul class='list-inline'>
-        <li><%= user.first_name %></li>
-        <li><%= user.followers.count %> followers</li>
-        <li>Read <%= current_user.number_of_same_books(user) %> books you read.</li>
-      </ul>
-    <% end %>
-<% end %>
+  <%= render 'user_cards', users: @popular_users %>
+</div>

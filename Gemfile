@@ -8,10 +8,20 @@ gem 'ruby-hmac', '~> 0.3'
 
 # OmniAuth for FB Login
 gem 'omniauth-facebook'
+# And for those who don't have it.
+gem 'omniauth-identity'
+
+# Bycrypt for secure password
+gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Bootstrap for looks
 gem 'bootstrap-sass', '~> 3.3.5'
+gem 'bootstrap_form'
 
+# Upload user photos
+gem "paperclip", "~> 4.3"
+# Save photos on S3
+gem 'aws-sdk', '~> 1.6'
 # Evaluate Image Size
 gem 'fastimage'
 
@@ -22,13 +32,16 @@ gem 'faker'
 gem 'will_paginate', '3.0.7'
 
 # Slugify Book and User Pages
-gem 'slugable_tim_beiko'
+# gem 'slugable_tim_beiko'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+
+# Use mysql2 in production
+gem 'mysql2'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -43,6 +56,8 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+
+gem 'jquery-ui-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # And this will help not fuck up jquery.
@@ -51,9 +66,6 @@ gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -74,5 +86,11 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  gem 'rspec-rails', '~> 3.0'
+end
+
+group :test do
+  gem 'shoulda-matchers'
 end
 
