@@ -1,7 +1,5 @@
 class User <ActiveRecord::Base
-  # Need to fix slug when multiple login sources (FB + Oauth Identity) !!!
-  include Slugable
-  slugable_column :first_name
+  before_save :generate_slug
   
   has_many :user_books
   has_many :books, through: :user_books
@@ -38,9 +36,14 @@ class User <ActiveRecord::Base
         user.token = auth.credentials.token
         user.expires_at = Time.at(auth.credentials.expires_at)
       end
-      user.slug = user.generate_slug
       user.save!
     end
+    # This is here so that the "provider" is not taken into account when seraching for users.
+    # This way, users from different providers will not have the same slug.
+    u = User.last
+    u.generate_slug
+    u.save!
+    return u
   end
 
   # Follows a user.
@@ -84,5 +87,35 @@ class User <ActiveRecord::Base
     return same_books_total
   end
 
-  
+  def to_param
+    self.slug
+  end
+
+  def generate_slug
+    the_slug = to_slug(self.first_name.to_s + self.last_name.to_s)
+    object = User.find_by slug: the_slug
+    count = 2
+      while object && object !=self
+        the_slug = append_suffix(the_slug, count)
+        object = self.class.find_by slug: the_slug
+        count += 1 
+      end
+    self.slug = the_slug.downcase
+  end
+
+  def append_suffix(str, count)
+    if str.split('-').last.to_i != 0
+      return str.split('-').slice(0...-1).join('-') + "-" + count.to_s
+    else
+      return str + "-" + count.to_s
+    end
+  end
+
+  def to_slug(name)
+    str = name.strip
+    str.gsub! /\s*[^A-Za-z0-9]\s*/, '-'
+    str.gsub! /-+/, '-'
+    str.gsub! /^-+|-+$/, ''
+    str.downcase
+  end
 end

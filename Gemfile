@@ -32,7 +32,7 @@ gem 'faker'
 gem 'will_paginate', '3.0.7'
 
 # Slugify Book and User Pages
-gem 'slugable_tim_beiko'
+# gem 'slugable_tim_beiko'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
