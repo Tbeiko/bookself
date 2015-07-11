@@ -43,7 +43,7 @@ class User <ActiveRecord::Base
     u = User.last
     u.generate_slug
     u.save!
-    return u
+    return User.where(provider: auth.provider, uid: auth.uid).first
   end
 
   # Follows a user.
