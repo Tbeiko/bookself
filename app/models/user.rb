@@ -44,10 +44,10 @@ class User <ActiveRecord::Base
     end
     # This is here so that the "provider" is not taken into account when seraching for users.
     # This way, users from different providers will not have the same slug.
-    u = User.last
-    u.generate_slug
-    u.save!
-    return User.where(provider: auth.provider, uid: auth.uid).first
+    # u = User.last
+    # u.generate_slug
+    # u.save!
+    # return User.where(provider: auth.provider, uid: auth.uid).first
   end
 
   # Follows a user.
