@@ -17,10 +17,14 @@
             <h4><%= book.authors %></h4>
 
             <% if logged_in? %>
-              <h5><%= link_to "Add to bookself", 
-                      read_path(user_book: {book_id: book.id, user_id: current_user.id, status: "read"}),method: :post %></h5>
-              <h5><%= link_to "Add to reading list",
-                      read_path(user_book: {book_id: book.id, user_id: current_user.id, status: "to-read"}), method: :post %></h5>
+              <% unless current_user_profile? && book.user_books.find_by(user_id: current_user.id, status: "read") %>
+                <h5><%= link_to "Add to bookshelf", 
+                        read_path(user_book: {book_id: book.id, user_id: current_user.id, status: "read"}),method: :post %></h5>
+              <% end %>
+              <% unless current_user_profile? && book.user_books.find_by(user_id: current_user.id, status: "to-read") %>
+                <h5><%= link_to "Add to reading list",
+                        read_path(user_book: {book_id: book.id, user_id: current_user.id, status: "to-read"}), method: :post %></h5>
+              <% end %>
               <% if current_user_profile? %>
                 <h5><%= link_to "Remove book",
                         delete_book_path(user_book: {book_id: book.id, user_id: current_user.id}), 
