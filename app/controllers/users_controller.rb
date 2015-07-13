@@ -38,14 +38,12 @@ class UsersController < ApplicationController
   def edit
     unless @user.provider == "identity"
       redirect_to root_path
-      flash[:danger] = "Oops, you're not allowed here."
     end
   end
 
   def update
     unless @user.provider == "identity"
       redirect_to root_path
-      flash[:danger] = "Oops, you're not allowed here."
     end
     if @user.update(user_params)
       @user.image = "#{@user.avatar.url(:medium)}"
