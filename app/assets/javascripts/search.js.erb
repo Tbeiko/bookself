@@ -1,0 +1,16 @@
+$(document).ready(function() {
+  searchBarPosition();
+});
+
+function searchBarPosition() {
+    $('#user-search').position({
+      my: "top",
+      at: "bottom",
+      of: $('#carousel-example-generic')
+    })
+    $('#corner-button').position({
+      my: "right top",
+      at: "right top",
+      of: $('#user-search')
+    });
+}

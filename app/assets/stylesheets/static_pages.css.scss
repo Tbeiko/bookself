@@ -115,24 +115,43 @@ h2 {
   height: 600px;
 }
 
-#user-search {
-  background-color: #99C2EB;
-  padding-top: 20px;
-  padding-bottom: 20px;
+#carousel-example-generic {
+  overflow: hidden;
+  clip: rect(0,0,600px,0);
 }
 
-.search-bar {
+.carousel-image {
+  min-width: 100%;
+  max-height: 1000px;
+  background-size: cover;
+}
+
+.carousel-caption {
+  position: absolute;
+  .carousel-name{
+    font-size: 24px;
+  } 
+
+  .carousel-description{
+    font-size: 16px;
+    margin-top: -10px;
+    margin-bottom: 20px
+  }
+}
+
+#user-search {
   background-color: #99C2EB;
-  border: none;
+  margin-top: -8px;
   height: 60px;
-  line-height: 60px;
-  margin-top: -15px;
-  font-size: 24px;
-  box-shadow: none;
+}
+
+
+.search-button:hover {
+  opacity: 0.5;
 }
 
 .user-results {
-  width: 75%;
+  background-color: white;
 }
 
 #popular-title {
@@ -144,7 +163,43 @@ h2 {
   z-index: -10000;
 }
 
+.search-bar {
+  margin-top: -4px;
+  background-color: #99C2EB;
+  border: none;
+  height: 45px;
+  line-height: 45px;
+  font-size: 16px;
+  box-shadow: none;
+}
+
+.search-button {
+  border-radius: 0;
+  height: 60px;
+  font-size: 16px;
+}
+
 @media (min-width: 768px) { 
+
+  #user-search {
+    height: 90px;
+  }
+  .search-bar {
+    margin-top: 10px;
+    background-color: #99C2EB;
+    border: none;
+    height: 70px;
+    line-height: 70px;
+    font-size: 24px;
+    box-shadow: none;
+  }
+
+  .search-button {
+    border-radius: 0;
+    width: 150px;
+    height: 90px;
+    font-size: 24px;
+  }
 
   #background-photo-home {
     height: 600px;
@@ -159,17 +214,36 @@ h2 {
     height: 600px;
   }
 
-  .carousel-name {
-    margin-top: -300px;
-  }
-
-  .carousel-see-bookshelf {
-    margin-top: 100px;
+  #carousel-example-generic {
+    overflow: hidden;
+    clip: rect(0,0,600px,0);
   }
 
   .carousel-image {
-    display: center-block;
-    max-height: 600px;
+    min-width: 100%;
+    max-width: none!important;
+    height: 600px!important;
+    background-size: cover;
+  }
+
+  .carousel-caption {
+    .carousel-name{
+      font-size: 36px;
+    } 
+
+    .carousel-description{
+      font-size: 24px;
+    }
+
+    .carousel-see-bookshelf {
+      margin-top: 150px;
+      margin-bottom: 100px;
+    }
+  }
+
+  .user-results {
+    margin-right: 10%;
+    margin-left: 10%;
   }
 
   .follower-card-container {
@@ -179,3 +253,54 @@ h2 {
 
 }
 
+@media (min-width: 992px) { 
+
+  .user-results {
+    margin-right: 15%;
+    margin-left: 15%;
+  }
+
+  #carousel-example-generic {
+    overflow: hidden;
+    clip: rect(0,0,600px,0);
+  }
+
+  .carousel-image {
+    min-width: 100%;
+    max-width: 1200px!important;
+    height: auto!important;
+    background-size: cover;
+  }
+
+  .carousel-caption {
+    .carousel-name{
+      font-size: 38px;
+    } 
+
+    .carousel-description{
+      font-size: 26px;
+    }
+
+    .carousel-see-bookshelf {
+      margin-bottom: 300px;
+    }
+  }
+}
+
+@media (min-width: 1200px) { 
+
+    .search-button {
+      width: 175px;
+    }
+
+    .carousel-image {
+      min-width: 100%;
+      max-width: 1500px!important;
+      background-size: cover;
+    }
+
+    .carousel-see-bookshelf {
+      margin-bottom: 500px!important;
+    }
+
+}
