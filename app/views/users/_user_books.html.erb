@@ -1,11 +1,5 @@
-<% if (@books.nil? || @books.empty?) && params[:tab] == "books" %>
-
-  <h2>Hey, seems like you don't have any books.</h2>
-  <h3><%= link_to "Why not add one?", new_book_path %></h3>
-<% elsif (@books.nil? || @books.empty?) && params[:tab] == "to-read" %>
-  <h2>Hey, seems like you don't have anything you want to read.</h2>
-  <h3><%= link_to "Why not see what others are reading", '/explore' %></h3>
-
+<% if (@books.nil? || @books.empty?) %>
+  <%= render 'empty_books' %>
 <% else %>
 
   <div class='all-books' >

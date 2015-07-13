@@ -1,5 +1,7 @@
 <section class='follower-card-container' >
-  <% if !users.nil? %>
+  <% if (users.empty? || users.nil?) %>
+    <%= render 'empty_follow', tab: params[:tab] %>
+  <% else %>
     <% users.each do |user| %>
 
       <div class='col-sm-4 col-xs-12 follower-card'>

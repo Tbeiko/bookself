@@ -1,0 +1,16 @@
+<div class='container text-center'>
+  <% if @user == current_user %>
+    <p>You don't have any books here yet.</p>
+    <p class='box-button center-block'>
+        <%= link_to "ADD YOUR FAVORITE BOOK", new_book_path %>
+    </p>
+  <% else %>
+    <p><%= @user.first_name %> doesn't have any books here yet.</p>
+    <p class='box-button center-block'>
+        <%= link_to "BACK TO MY BOOKSELF", user_path(current_user) %>
+    </p>
+  <% end %>
+  <%= link_to "/explore" do %>
+      <p class="paragraph" id="explore">EXPLORE LIBRARIES  ></p>
+  <% end %>
+</div>
