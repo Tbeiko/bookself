@@ -41,19 +41,15 @@
   </ul>
 </div>
 
-  <% if @user.provider == 'identity' %>
-    <%= render 'user_books'%>
-  <% else %>
-    <% if params[:tab].nil? %>
-      <%= render 'user_books', tab: "books"%>
-    <% elsif params[:tab] == 'to-read' %>
-      <%= render 'user_books', tab: "to-read" %>
-    <% elsif params[:tab] == 'followers' %>
-      <%= render 'user_cards', users: @followers %>
-    <% elsif params[:tab] == 'following' %>
-      <%= render 'user_cards', users: @following %>
-    <% elsif params[:tab] == 'books' %>
-      <%= render 'user_books' %>
-    <% end %>
+  <% if params[:tab].nil? %>
+    <%= render 'user_books', tab: "books"%>
+  <% elsif params[:tab] == 'to-read' %>
+    <%= render 'user_books', tab: "to-read" %>
+  <% elsif params[:tab] == 'followers' %>
+    <%= render 'user_cards', users: @followers %>
+  <% elsif params[:tab] == 'following' %>
+    <%= render 'user_cards', users: @following %>
+  <% elsif params[:tab] == 'books' %>
+    <%= render 'user_books' %>
   <% end %>
 </div>

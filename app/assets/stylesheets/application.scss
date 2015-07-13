@@ -20,6 +20,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "fonts";
+@import "ms_class";
 @import "*";
 
 a, a.deco-none {
@@ -117,8 +118,8 @@ a, a.deco-none {
 }
 
 .book-row {
-    display: inline-block;
-    float: none;
+  display: inline-block;
+  float: none;
 }
 
 .book-options {
@@ -193,6 +194,11 @@ a, a.deco-none {
   opacity: 0.5;
 }
 
+@media (min-width: 450px) and (max-width: 767px) {
+  .follower-card {
+    margin-left: 15%;
+  }
+}
 
 @media (min-width: 768px) { 
 
