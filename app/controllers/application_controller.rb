@@ -57,6 +57,10 @@ class ApplicationController < ActionController::Base
 
   end
 
+    def sort_users_by_followers
+      @popular_users = User.all.sort_by {|user| user.followers.count}.reverse!
+    end
+
   def current_user_profile?
     if logged_in? && params[:id] == current_user.slug
       true
@@ -68,6 +72,6 @@ class ApplicationController < ActionController::Base
   end
 
 
-  helper_method :current_user, :logged_in?, :require_user, :bad_image?, :book_count, :current_user_profile?, :require_admin!
+  helper_method :current_user, :logged_in?, :require_user, :bad_image?, :book_count, :current_user_profile?, :require_admin!, :sort_users_by_followers
 
 end

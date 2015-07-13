@@ -73,10 +73,6 @@ class UsersController < ApplicationController
       @user = User.find_by(slug: params[:id])
     end
 
-    def sort_users_by_followers
-      @popular_users = User.all.sort_by {|user| user.followers.count}.reverse!
-    end
-
     def return_books(status)
       @books = []
       user_books = @user.user_books.order('user_books.updated_at desc').where(status: status)

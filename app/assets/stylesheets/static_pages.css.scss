@@ -25,7 +25,7 @@ h2 {
   position: absolute;
   width: 100%;
   z-index: -100;
-  height: 400px;
+  height: 600px;
   background-color: #2E8A2E;
 }
 
@@ -41,20 +41,6 @@ h2 {
   color: white;
 }
 
-.home-top {
-  text-align: center;
-  height: 600px;
-  padding-top: 250px;
-
-  .title {
-    font-size: 48px;
-  }
-
-  .box-button {
-    background-color: white;
-    color: black;
-  }
-}
 
 .box-button {
   margin-top: 40px;
@@ -74,10 +60,43 @@ h2 {
   font-size: 20px;
 }
 
+.home-top {
+  text-align: center;
+
+  .title {
+    margin-top: 200px;
+    font-size: 30px;
+  }
+
+  .paragraph {
+    font-size: 15px;
+  }
+
+  .box-button {
+    background-color: white;
+    color: black;
+  }
+}
+
 .home-middle {
-  margin-top: 75px;
+  margin-top: 200px;
   margin-bottom: 75px;
   background-color: white;
+  text-align: center;
+
+  .title, .paragraph {
+    margin-right: 5%;
+    margin-left: 5%;
+  }
+  .title {
+    margin-top: 300px;
+    font-size: 24px;
+    
+  }
+
+  .paragraph {
+    font-size: 16px;
+  }
 }
 
 #explore {
@@ -101,7 +120,8 @@ h2 {
 }
 
 .quote {
-  padding-top: 150px;
+  padding-top: 100px;
+  font-size: 24px;
 }
 
 #quote-name {
@@ -112,7 +132,23 @@ h2 {
   margin-top: 150px;
   background-color: white;
   text-align: center;
-  height: 600px;
+  padding-bottom: 50px;
+}
+
+.home-last-call {
+  background-color: yellow;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  h1, p {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+}
+
+.footer {
+  padding-top: 25px;
+  text-align: center;
 }
 
 #carousel-example-generic {
@@ -122,8 +158,8 @@ h2 {
 
 .carousel-image {
   min-width: 100%;
-  max-height: 1000px;
-  background-size: cover;
+  max-width: 150%!important;
+  height: 450px!important;
 }
 
 .carousel-caption {
@@ -180,6 +216,62 @@ h2 {
 }
 
 @media (min-width: 768px) { 
+  .home-top {
+    text-align: center;
+
+    .title {
+      margin-top: 250px;
+      font-size: 48px;
+    }
+
+    .paragraph {
+      font-size: 20px;
+    }
+
+    .box-button {
+      background-color: white;
+      color: black;
+    }
+  }
+
+  .home-middle {
+    margin-top: 75px;
+    margin-bottom: 75px;
+    background-color: white;
+    text-align: left;
+
+    .title, .paragraph {
+      margin: 0;
+    }
+    .title {
+      margin-top: 200px;
+      font-size: 36px;
+    }
+
+    .paragraph {
+      font-size: 20px;
+    }
+  }
+
+  .quote {
+    padding-top: 150px;
+    font-size: 30px;
+  }
+
+  #quote-name {
+    font-size: 20px;
+  }
+
+  .home-bottom {
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+
+  .home-last-call {
+    margin-top: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
 
   #user-search {
     height: 90px;
@@ -199,11 +291,6 @@ h2 {
     width: 150px;
     height: 90px;
     font-size: 24px;
-  }
-
-  #background-photo-home {
-    height: 600px;
-    background-color: #2E8A2E;
   }
 
   .home-middle {

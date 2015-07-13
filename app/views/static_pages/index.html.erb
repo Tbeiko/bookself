@@ -14,7 +14,7 @@
   </section>
 
   <section class='home-middle black'>
-    <h1 class='text-left'>Algorithms only go so far.</h1>
+    <h1 class='title'>Algorithms only go so far.</h1>
     <p class="paragraph">Explore freinds and inspirational people's bookshelves,</br>
     get personal recommendations and pass 'em on.</p>
     <%= link_to "/explore" do %>
@@ -39,6 +39,21 @@
         <%= link_to "CREATE MY BOOKSELF", "/auth/facebook", id: "sign_in" %>
       <% end %>
     </p>
+  </section>
+
+  <%= render 'users/index_block' %>
+
+  <section class='home-last-call black'>
+    <h1>Insipired yet?</h1>
+    <p class="paragraph">Start following people and see what they're reading.</p>
+
+    <div class='box-button center-block'>
+      <% if current_user %>
+        <%= link_to "GO TO MY BOOKSELF", user_path(current_user) %>
+      <% else %>
+        <%= link_to "CREATE MY BOOKSELF", "/auth/facebook", id: "sign_in" %>
+      <% end %>
+    </div>
   </section>
 
 </div>
