@@ -4,18 +4,20 @@ $(document).on("scroll", function(){
   if
       ($(document).scrollTop() > $(".background-photo").height() ){
         $("#header").addClass("shrink");
+        $("#header").removeClass("white");
+        $("#header").addClass("black");
         $("#header").css("background", "white");
-        $("#header").css("cursor", "pointer")
-        $("#header").css("color", "black");
+        $("#header").css("cursor", "pointer");
         $("#header").css("box-shadow", "0 0px 5px rgba(0, 0, 0, 0.5)");
-      click_to_show_header();
+        click_to_show_header();
   }
   else
   {
     $("#header").removeClass("shrink");
+    $("#header").removeClass("black");
+    $("#header").addClass("white");
     $("#header").css("background", "none");
-    $("#header").css("cursor", "auto")
-    $("#header").css("color", "black");
+    $("#header").css("cursor", "auto");
     $("#header").css("box-shadow", "none");
   }
 
@@ -33,18 +35,21 @@ $(document).on("scroll", function(){
   if
       ($(document).scrollTop() > $(".big-photo").height() ){
       $("#header-home").addClass("shrink");
+      $("#header-home").addClass("black");
+      $("#header-home").removeClass("white");
       $("#header-home").css("background", "white");
-      $("#header-home").css("color", "black");
-      $("#header-home").css("cursor", "pointer")
+      $("#header-home").css("cursor", "pointer");
       $("#header-home").css("box-shadow", "0 0px 5px rgba(0, 0, 0, 0.5)");
       click_to_show_home_header();
   }
   else
   {
     $("#header-home").removeClass("shrink");
+    $("#header-home").addClass("white");
+    $("#header-home").removeClass("black");
     $("#header-home").css("background", "none");
-    $("#header-home").css("color", "white");
-    $("#header-home").css("cursor", "auto")
+    $("#header-home").css("font-color", "white");
+    $("#header-home").css("cursor", "auto");
     $("#header-home").css("box-shadow", "none");
   }
 

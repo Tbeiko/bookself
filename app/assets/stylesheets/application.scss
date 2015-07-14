@@ -43,6 +43,14 @@ a, a.deco-none {
   font-family: 'Leitura3';
 }
 
+.white {
+  color: white;
+}
+
+.black {
+  color: black;
+}
+
 .shrink {
   margin-top: -50px;
 }
@@ -56,7 +64,7 @@ a, a.deco-none {
   margin-left: 5%;
   margin-bottom: 0;
   vertical-allign: middle;
-  color: white;
+
   h3 {
     font-size: 20px;
   }
@@ -130,6 +138,9 @@ a, a.deco-none {
   position: absolute;
   top: 0;
   color: black;
+  h4 {
+    font-size: 15px;
+  }
 }
 
 .profile-book {

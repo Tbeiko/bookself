@@ -7,11 +7,11 @@ function showBookOption() {
   $(".all-books .book-row").on("mouseenter", function() {
     $(this).children('.book-options').css("width", $('.profile-book').width());
     $(this).children('.book-options').css("height", $('.profile-book').height());
-    $(this).children('.book-options').fadeIn(20);
+    $(this).children('.book-options').fadeIn(10);
     $(this).children('.profile-book').css("opacity", 0.2)
     $('.book-options').position({
       // +15 on the left is because of padding included with bootstrap
-      my: "left+15 top+15",
+      my: "left+25 top+15",
       at: "left top",
       of: $(this)
     });
@@ -19,7 +19,7 @@ function showBookOption() {
   });
 
   $(".all-books .book-row").on("mouseleave", function() {
-    $(this).children('.book-options').fadeOut(20);
+    $(this).children('.book-options').fadeOut(10);
     $(this).children('.profile-book').css("opacity", 1)
   });
 }
