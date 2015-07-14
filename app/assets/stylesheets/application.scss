@@ -133,15 +133,6 @@ a, a.deco-none {
   float: none;
 }
 
-.book-options {
-  display:none;
-  position: absolute;
-  top: 0;
-  color: black;
-  h4 {
-    font-size: 15px;
-  }
-}
 
 .profile-book {
   position: relative;
@@ -171,8 +162,10 @@ a, a.deco-none {
   }
 
   #card-image {
-    height: 100px;
+    max-height: 100px;
     width: 100%;
+    overflow: hidden;
+    clip: rect(0,0,100px,0);
   }
 
   #card-info {
@@ -208,6 +201,36 @@ a, a.deco-none {
   opacity: 0.5;
 }
 
+.book-options {
+  display: none;
+  position: absolute;
+  top: 0;
+  color: black;
+  vertical-align: middle;
+
+  .hover-title {
+    font-size: 12px;
+  }
+
+  .list-inline {
+    margin-bottom: 0;
+  }
+
+  .hover-book-item {
+    vertical-align: middle;
+    line-height: 25px;
+
+    img {
+      height: 20px;
+      width: auto;
+    }
+    .hover-text {
+      font-size: 10px;
+    }
+  }
+}
+
+
 @media (min-width: 450px) and (max-width: 767px) {
   .follower-card {
     margin-left: 15%;
@@ -240,6 +263,26 @@ a, a.deco-none {
     padding-left: -5px;
     padding-right: -5px;
   }
+
+  .hover-book-item {
+    vertical-align: middle;
+    line-height: 45px;
+  }
+
+  .hover-title {
+    font-size: 16px!important;
+  }
+
+  .hover-book-item {
+    line-height: 40px!important;
+    img {
+      height: 30px!important;
+    }
+    .hover-text {
+      font-size: 14px!important;
+    }
+  }
+
 
 }
 

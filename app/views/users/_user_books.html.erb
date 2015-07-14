@@ -13,26 +13,47 @@
       
 
         <div class='book-options'>
-            <h4><%= book.title %></h4>
-            <h4><%= book.authors %></h4>
+            <h4 class='hover-title'><%= book.title %></h4>
+            <h4 class='hover-title'><%= book.authors %></h4>
 
             <% if logged_in? %>
+
               <% unless current_user_profile? && book.user_books.find_by(user_id: current_user.id, status: "read") %>
-                <h5><%= link_to "Add to bookshelf", 
-                        read_path(user_book: {book_id: book.id, user_id: current_user.id, status: "read"}),method: :post %></h5>
+                <%= link_to read_path(user_book: {book_id: book.id, user_id: current_user.id, status: "read"}), method: :post do %>
+                  <ul class='list-inline hover-book-item'>
+                    <li class="hover-book-item"><img class='icon' src='/assets/images/icons/hover_add_bookshelf.svg'/></li>
+                    <li class="hover-book-item"><h5 class='hover-text'>Add to bookshelf</h5></li>
+                  </ul>
+                <% end %>  
               <% end %>
+
               <% unless current_user_profile? && book.user_books.find_by(user_id: current_user.id, status: "to-read") %>
-                <h5><%= link_to "Add to reading list",
-                        read_path(user_book: {book_id: book.id, user_id: current_user.id, status: "to-read"}), method: :post %></h5>
+                <%= link_to read_path(user_book: {book_id: book.id, user_id: current_user.id, status: "to-read"}), method: :post do %>
+                  <ul class='list-inline'>
+                    <li class="hover-book-item"><img class='icon' src='/assets/images/icons/hover_add_to_read.svg'/></li>
+                    <li class="hover-book-item"><h5 class='hover-text' >Reading list</h5></li>
+                  </ul>
+                <% end %>
               <% end %>
+
               <% if current_user_profile? %>
-                <h5><%= link_to "Remove book",
-                        delete_book_path(user_book: {book_id: book.id, user_id: current_user.id}), 
-                          method: :post %></h5>
+                <%= link_to delete_book_path(user_book: {book_id: book.id, user_id: current_user.id}), method: :post do %>
+                  <ul class='list-inline'>
+                    <li class="hover-book-item"><img class='icon' src='/assets/images/icons/hover_delete.svg'/></li>
+                    <li class="hover-book-item"><h5 class='hover-text' >Remove book</h5></li>
+                  </ul>
+                <% end %>
               <% end %>
+
             <% end %>
 
-            <h5><%= link_to "Buy Book", book.amazon_link %></h5>
+            <%= link_to book.amazon_link do %>
+              <ul class='list-inline'>
+                <li class="hover-book-item"><img class='icon' src='/assets/images/icons/hover_buy.svg'/></li>
+                <li class="hover-book-item"><h5 class='hover-text' >Buy this book</h5></li>
+              </ul>
+            <% end %>
+
         </div>
       </div>
     <% end %>
