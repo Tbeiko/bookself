@@ -57,12 +57,26 @@ class UsersController < ApplicationController
 
   def following
     @title = "Following"
-    @following = @user.following.sort_by {|user| current_user.number_of_same_books(user)}.reverse!
+    @following = @user.following.sort_by do |user| 
+      if current_user
+        current_user.number_of_same_books(user)
+      else
+        user.followers.count
+      end
+    end
+    @following.reverse!
   end
 
   def followers
     @title = "Followers"
-    @followers = @user.followers.sort_by {|user| current_user.number_of_same_books(user)}.reverse!
+    @followers = @user.followers.sort_by do |user| 
+      if current_user
+        current_user.number_of_same_books(user)
+      else
+        user.followers.count
+      end
+    end
+    @followers.reverse!
   end
 
   private
