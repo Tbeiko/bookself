@@ -38,7 +38,9 @@
 
     <div class='center-block' style='margin-top:30px;'>
       <% if current_user %>
-        <%= link_to "GO TO MY BOOKSELF", user_path(current_user) %>
+        <%= link_to user_path(current_user)  do %>
+          <img src='/assets/images/icons/button_gotobookshelf_blue.png'/>
+        <% end %>
       <% else %>
         <%= link_to "/auth/facebook", id: "sign_in" do %>
           <img src='/assets/images/icons/button_create_home_blue.png'/>
@@ -55,7 +57,9 @@
 
     <div class='center-block' style='margin-top:30px;'>
       <% if current_user %>
-        <%= link_to "GO TO MY BOOKSELF", user_path(current_user) %>
+        <%= link_to user_path(current_user)  do %>
+          <img src='/assets/images/icons/button_gotobookshelf_blue.png'/>
+        <% end %>
       <% else %>
         <%= link_to "/auth/facebook", id: "sign_in" do %>
           <img src='/assets/images/icons/button_create_home_blue.png'/>
