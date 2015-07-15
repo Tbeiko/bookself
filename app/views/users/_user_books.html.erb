@@ -21,7 +21,7 @@
               <% unless current_user_profile? && book.user_books.find_by(user_id: current_user.id, status: "read") %>
                 <%= link_to read_path(user_book: {book_id: book.id, user_id: current_user.id, status: "read"}), method: :post do %>
                   <ul class='list-inline hover-book-item'>
-                    <li class="hover-book-item"><img class='icon' src='/assets/images/icons/hover_add_bookshelf.svg'/></li>
+                    <li class="hover-book-item"><img class='icon' src='/assets/images/icons/hover_tobookshelf.png'/></li>
                     <li class="hover-book-item"><h5 class='hover-text'>Add to bookshelf</h5></li>
                   </ul>
                 <% end %>  
@@ -30,7 +30,7 @@
               <% unless current_user_profile? && book.user_books.find_by(user_id: current_user.id, status: "to-read") %>
                 <%= link_to read_path(user_book: {book_id: book.id, user_id: current_user.id, status: "to-read"}), method: :post do %>
                   <ul class='list-inline'>
-                    <li class="hover-book-item"><img class='icon' src='/assets/images/icons/hover_add_to_read.svg'/></li>
+                    <li class="hover-book-item"><img class='icon' src='/assets/images/icons/hover_toread.png'/></li>
                     <li class="hover-book-item"><h5 class='hover-text' >Reading list</h5></li>
                   </ul>
                 <% end %>
@@ -39,7 +39,7 @@
               <% if current_user_profile? %>
                 <%= link_to delete_book_path(user_book: {book_id: book.id, user_id: current_user.id}), method: :post do %>
                   <ul class='list-inline'>
-                    <li class="hover-book-item"><img class='icon' src='/assets/images/icons/hover_delete.svg'/></li>
+                    <li class="hover-book-item"><img class='icon' src='/assets/images/icons/hover_remove.png'/></li>
                     <li class="hover-book-item"><h5 class='hover-text' >Remove book</h5></li>
                   </ul>
                 <% end %>
@@ -49,7 +49,7 @@
 
             <%= link_to book.amazon_link do %>
               <ul class='list-inline'>
-                <li class="hover-book-item"><img class='icon' src='/assets/images/icons/hover_buy.svg'/></li>
+                <li class="hover-book-item"><img class='icon' src='/assets/images/icons/hover_buy.png'/></li>
                 <li class="hover-book-item"><h5 class='hover-text' >Buy this book</h5></li>
               </ul>
             <% end %>
