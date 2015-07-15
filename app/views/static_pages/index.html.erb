@@ -4,11 +4,15 @@
     <h1 class="title">Books. Pass 'em on.</h1>
     <p class="paragraph">Find the best reads from your friends and inspirations.</br>
        Recommend books to people you know.</p>
-    <p class='box-button center-block'>
+    <p class='center-block'>
       <% if current_user %>
-        <%= link_to "GO TO MY BOOKSELF", user_path(current_user) %>
+        <%= link_to user_path(current_user)  do %>
+          <img src='/assets/images/icons/button_go_to_home.png'/>
+        <% end %>
       <% else %>
-        <%= link_to "CREATE MY BOOKSELF", "/auth/facebook", id: "sign_in" %>
+        <%= link_to "/auth/facebook", id: "sign_in" do %>
+          <img src='/assets/images/icons/button_create_home.png'/>
+        <% end %>
       <% end %>
     </p>
   </section>
