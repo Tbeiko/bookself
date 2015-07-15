@@ -237,6 +237,29 @@ a, a.deco-none {
   }
 }
 
+@media (min-width: 450px) {
+  
+  .hover-book-item {
+    vertical-align: middle;
+    line-height: 45px;
+  }
+
+  .hover-title {
+    font-size: 16px!important;
+  }
+
+  .hover-book-item {
+    line-height: 40px!important;
+    img {
+      height: 30px!important;
+    }
+    .hover-text {
+      font-size: 14px!important;
+    }
+  }
+  
+}
+
 @media (min-width: 768px) { 
 
   .navbar {
@@ -262,25 +285,6 @@ a, a.deco-none {
   .book-row {
     padding-left: -5px;
     padding-right: -5px;
-  }
-
-  .hover-book-item {
-    vertical-align: middle;
-    line-height: 45px;
-  }
-
-  .hover-title {
-    font-size: 16px!important;
-  }
-
-  .hover-book-item {
-    line-height: 40px!important;
-    img {
-      height: 30px!important;
-    }
-    .hover-text {
-      font-size: 14px!important;
-    }
   }
 
 
