@@ -2,9 +2,9 @@
   <% if params[:tab] == "followers" %>
     <% if @user == current_user %>
       <h4>You don't have any followers yet.</h4>
-      <p class='box-button center-block'>
-          <%= link_to "ADD YOUR FAVORITE BOOK", new_book_path %>
-      </p>
+      <%= link_to user_path(current_user)  do %>
+        <img class='center-block custom-button' src='/assets/images/icons/button_gotobookshelf_blue.png'/>
+      <% end %>
     <% else %>
       <h4><%= @user.first_name %> doesn't have any followers yet.</h4>
       <%= form_for(current_user.active_relationships.build) do |f| %>
@@ -18,7 +18,7 @@
     <% if @user == current_user %>
       <h4>You're not following anyone yet.</h4>
       <p class='box-button center-block'>
-          <%= link_to "FIND PEOPLE TO FOLLOW", explore_path %>
+        <%= link_to "FIND PEOPLE TO FOLLOW", explore_path %>
       </p>
     <% else %> 
       <h4><%= @user.first_name %> isn't following anyone yet.</h4>

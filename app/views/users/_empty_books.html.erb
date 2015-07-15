@@ -5,10 +5,10 @@
         <%= link_to "ADD YOUR FAVORITE BOOK", new_book_path %>
     </p>
   <% else %>
-    <p><%= @user.first_name %> doesn't have any books here yet.</p>
-    <p class='box-button center-block'>
-        <%= link_to "BACK TO MY BOOKSELF", user_path(current_user) %>
-    </p>
+    <h5><%= @user.first_name %> doesn't have any books here yet.</h5>
+      <%= link_to user_path(current_user)  do %>
+        <img class='center-block custom-button' src='/assets/images/icons/button_gotobookshelf_blue.png'/>
+      <% end %>
   <% end %>
-  <%= render 'static_pages/explore',:layout => 'landing' %>
+  <%= render 'static_pages/explore', :layout => 'landing' %>
 </div>
