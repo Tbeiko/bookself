@@ -1,3 +1,4 @@
+<div class='container' style='margin-top: 150px;margin-bottom:150px;'>
 <h1>Create a new user</h1>
 
 <%= bootstrap_form_tag url: "/auth/identity/register" do |f| %>
@@ -11,3 +12,4 @@
   <%= f.password_field :password_confirmation%>
   <%= f.submit "Create User" %>
 <% end %>
+</div>
