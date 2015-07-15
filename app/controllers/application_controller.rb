@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
   end
 
   def book_count(user)
-    if logged_in?
+    if logged_in? && !current_user.nil? && !user.nil?
       books = current_user.number_of_same_books(user)
       if books == 1
         return "#{books} book in common"

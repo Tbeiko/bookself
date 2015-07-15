@@ -32,13 +32,15 @@
     <h1 >Try it for yourself.</h1>
     <p class="paragraph">Create your bookshelf and receive recommendations.</p>
 
-    <p class='box-button center-block'>
+    <div class='center-block' style='margin-top:30px;'>
       <% if current_user %>
         <%= link_to "GO TO MY BOOKSELF", user_path(current_user) %>
       <% else %>
-        <%= link_to "CREATE MY BOOKSELF", "/auth/facebook", id: "sign_in" %>
+        <%= link_to "/auth/facebook", id: "sign_in" do %>
+          <img src='/assets/images/icons/button_create_home_blue.png'/>
+        <% end %>
       <% end %>
-    </p>
+    </div>
   </section>
 
   <%= render 'users/index_block' %>
@@ -47,13 +49,16 @@
     <h1>Insipired yet?</h1>
     <p class="paragraph">Start following people and see what they're reading.</p>
 
-    <div class='box-button center-block'>
+    <div class='center-block' style='margin-top:30px;'>
       <% if current_user %>
         <%= link_to "GO TO MY BOOKSELF", user_path(current_user) %>
       <% else %>
-        <%= link_to "CREATE MY BOOKSELF", "/auth/facebook", id: "sign_in" %>
+        <%= link_to "/auth/facebook", id: "sign_in" do %>
+          <img src='/assets/images/icons/button_create_home_blue.png'/>
+        <% end %>
       <% end %>
     </div>
+
   </section>
 
 </div>
