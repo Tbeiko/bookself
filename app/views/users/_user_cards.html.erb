@@ -9,8 +9,10 @@
 
 
           <div id='color'>
-            <% if user.cover.url.empty? %>
-            <div style="background-color:<%= random_color %>; height:100px;"></div>
+          <% if user.cover.url.empty? && !user.color.nil? %>
+            <div style="background-color:<%= user.color %>; height:100px;"></div>
+          <% elsif user.cover.url.empty? && user.color.nil? %>
+            <div style="background-color:<%= random.color %>; height:100px;"></div>
           <% else %>
             <img class='img-responsive' id='card-image' src="<%= user.cover(:small) %>"/>
           <% end %>

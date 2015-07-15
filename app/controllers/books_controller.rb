@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :set_user
   before_action :require_user, only: [:new, :create]
   before_action :new, only: [:search]
 
@@ -36,6 +37,9 @@ class BooksController < ApplicationController
   end
 
   private
+    def set_user 
+      @user = current_user
+    end
 
     def book_params
       params.require(:book).permit(:title, :authors, :amazon_link, :asin, :cover_image_link, user_books_attributes: [:status])

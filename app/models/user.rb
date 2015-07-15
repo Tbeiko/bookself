@@ -40,6 +40,7 @@ class User <ActiveRecord::Base
         user.token = auth.credentials.token
         user.expires_at = Time.at(auth.credentials.expires_at)
       end
+      user.random_color
       user.save!
     end
     # This is here so that the "provider" is not taken into account when seraching for users.
@@ -121,5 +122,9 @@ class User <ActiveRecord::Base
     str.gsub! /-+/, '-'
     str.gsub! /^-+|-+$/, ''
     str.downcase
+  end
+
+  def random_color
+    self.color = ["#80b891", "#f89f81", "#586576", "#f0d2a8"].sample
   end
 end

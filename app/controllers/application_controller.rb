@@ -69,7 +69,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def random_color
+    ["#80b891", "#f89f81", "#586576", "#f0d2a8"].sample
+  end
 
-  helper_method :current_user, :logged_in?, :require_user, :bad_image?, :book_count, :current_user_profile?, :require_admin!, :sort_users_by_followers
+
+  helper_method :current_user, :logged_in?, :require_user, :bad_image?, :book_count, :current_user_profile?, :require_admin!, :sort_users_by_followers, :random_color
 
 end
