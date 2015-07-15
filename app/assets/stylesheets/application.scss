@@ -63,8 +63,10 @@ a, a.deco-none {
   margin-right: 5%;
   margin-left: 5%;
   margin-bottom: 0;
-  vertical-allign: middle;
 
+  li {
+    vertical-align: middle!important;
+  }
   h3 {
     font-size: 20px;
   }
@@ -72,7 +74,7 @@ a, a.deco-none {
 
 #nav-item {
   line-height: 50px;
-  vertical-allign: middle;
+  vertical-align: middle;
 }
 
 .nav-inner {
@@ -87,6 +89,23 @@ a, a.deco-none {
     float:none;
 }
 
+.navbar-photo {
+  height: 33px;
+  width: 33px;
+}
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+  background-color: inherit;
+  border: none;
+}
+
+.dropdown-menu {
+  .option {
+  font-family: Karla;
+  width: 100%
+  }
+}
+
 .nav-tabs {
   border: none;
 }
@@ -99,7 +118,7 @@ a, a.deco-none {
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
   border: none;
-  font-weight: bold;
+  font-family: Karla;
 }
 
 .background-photo {
@@ -238,7 +257,12 @@ a, a.deco-none {
 }
 
 @media (min-width: 450px) {
-  
+
+  .navbar-photo {
+    height: 40px;
+    width: 40px;
+  }
+
   .hover-book-item {
     vertical-align: middle;
     line-height: 45px;
@@ -265,6 +289,10 @@ a, a.deco-none {
   .navbar {
     h3 {
     font-size: 24px;
+    }
+
+    li {
+      width: 110px;
     }
   }
   .background-photo {

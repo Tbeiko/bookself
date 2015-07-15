@@ -12,16 +12,27 @@
     </li>
 
 
-      <li class='nav nav-item navbar-right'>
-        <ul class='list-inline'>
-          <% if current_user %>
-            <li><h3><%= link_to "#{current_user.first_name}", user_path(current_user) %><h3></li>
-            <li><%= link_to "Sign out", signout_path %></li> 
-          <% else %>
-            <li><h3><%= link_to "Sign in", '/auth/facebook' %><h3></li>
-          <% end %>
+
+
+    <li class='nav nav-item navbar-right'>
+      <div class='btn-group pull-right'>
+        <%= link_to '#', class: 'btn btn-small dropdown-toggle', 'data-toggle' => 'dropdown' do %>
+          <img class='img-circle navbar-photo' src="<%= current_user.image %>"/> <span class='caret'></span>
+        <%end%>
+        <ul class='dropdown-menu black'>
+          <li class='option'>
+            <%= link_to "My Bookshelf", user_path(current_user) %>
+          </li>
+          <li class='option'>
+            <%= link_to "Reading List", user_path(current_user, tab: 'to-read') %>
+          </li>
+          <li class='option'>
+            <%= link_to "Sign Out", signout_path %>
+          </li>
         </ul>
-      </li>   
+      </div>
+    </li>
+
   </ul>
 </nav>
     
