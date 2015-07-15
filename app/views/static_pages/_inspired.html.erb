@@ -1,0 +1,15 @@
+<section class='home-last-call black'>
+  <h1>Insipired yet?</h1>
+  <p class="paragraph">Start following people and see what they're reading.</p>
+  <div style='margin-top:30px;'>
+    <% if current_user %>
+      <%= link_to user_path(current_user)  do %>
+        <img class='center-block custom-button' src='/assets/images/icons/button_gotobookshelf_blue.png'/>
+      <% end %>
+    <% else %>
+      <%= link_to "/auth/facebook", id: "sign_in" do %>
+        <img class='center-block custom-button' src='/assets/images/icons/button_create_home_blue.png'/>
+      <% end %>
+    <% end %>
+  </div>
+</section>
