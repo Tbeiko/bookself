@@ -184,6 +184,22 @@ h2 {
   }
 }
 
+.carousel-control.left {
+  background-image: none;
+}
+
+.right-arrow {
+  margin-left: -60px;
+}
+.left-arrow, .right-arrow {
+  position: absolute;
+  top: 50%;
+}
+
+.carousel-control.right {  
+  background-image: none;
+}
+
 #user-search {
   background-color: #99C2EB;
   margin-top: -8px;
