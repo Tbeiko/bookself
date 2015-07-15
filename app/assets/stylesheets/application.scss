@@ -121,6 +121,12 @@ a, a.deco-none {
   font-family: Karla;
 }
 
+.custom-button {
+  width: 250px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
 .background-photo {
   position: absolute;
   min-width: 100%;
@@ -297,6 +303,10 @@ a, a.deco-none {
   }
   .background-photo {
     height: 400px;
+  }
+
+  .custom-button {
+    width:auto;
   }
 
   #profile-photo {

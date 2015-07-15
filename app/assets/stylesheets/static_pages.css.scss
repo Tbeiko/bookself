@@ -41,6 +41,11 @@ h2 {
   font-family: 'Leitura3';
 }
 
+.custom-button {
+  width: 250px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
 
 .box-button {
   margin-top: 40px;
@@ -240,6 +245,7 @@ h2 {
   font-size: 16px;
 }
 
+
 @media (min-width: 768px) { 
   .home-top {
     text-align: center;
@@ -257,6 +263,10 @@ h2 {
       background-color: white;
       color: black;
     }
+  }
+
+  .custom-button {
+    width: auto;
   }
 
   .home-middle {

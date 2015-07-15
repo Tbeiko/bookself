@@ -4,17 +4,17 @@
     <h1 class="title">Books. Pass 'em on.</h1>
     <p class="paragraph">Find the best reads from your friends and inspirations.</br>
        Recommend books to people you know.</p>
-    <p class='center-block'>
+    <div>
       <% if current_user %>
         <%= link_to user_path(current_user)  do %>
-          <img src='/assets/images/icons/button_go_to_home.png'/>
+          <img class='center-block custom-button' src='/assets/images/icons/button_go_to_home.png'/>
         <% end %>
       <% else %>
         <%= link_to "/auth/facebook", id: "sign_in" do %>
-          <img src='/assets/images/icons/button_create_home.png'/>
+          <img class='center-block custom-button' src='/assets/images/icons/button_create_home.png'/>
         <% end %>
       <% end %>
-    </p>
+    </div>
   </section>
 
   <section class='home-middle black'>
@@ -36,14 +36,14 @@
     <h1 >Try it for yourself.</h1>
     <p class="paragraph">Create your bookshelf and receive recommendations.</p>
 
-    <div class='center-block' style='margin-top:30px;'>
+    <div style='margin-top:30px;'>
       <% if current_user %>
         <%= link_to user_path(current_user)  do %>
-          <img src='/assets/images/icons/button_gotobookshelf_blue.png'/>
+          <img class='center-block custom-button' src='/assets/images/icons/button_gotobookshelf_blue.png'/>
         <% end %>
       <% else %>
         <%= link_to "/auth/facebook", id: "sign_in" do %>
-          <img src='/assets/images/icons/button_create_home_blue.png'/>
+          <img class='center-block custom-button' src='/assets/images/icons/button_create_home_blue.png'/>
         <% end %>
       <% end %>
     </div>
@@ -55,14 +55,14 @@
     <h1>Insipired yet?</h1>
     <p class="paragraph">Start following people and see what they're reading.</p>
 
-    <div class='center-block' style='margin-top:30px;'>
+    <div style='margin-top:30px;'>
       <% if current_user %>
         <%= link_to user_path(current_user)  do %>
-          <img src='/assets/images/icons/button_gotobookshelf_blue.png'/>
+          <img class='center-block custom-button' src='/assets/images/icons/button_gotobookshelf_blue.png'/>
         <% end %>
       <% else %>
         <%= link_to "/auth/facebook", id: "sign_in" do %>
-          <img src='/assets/images/icons/button_create_home_blue.png'/>
+          <img class='center-block custom-button' src='/assets/images/icons/button_create_home_blue.png'/>
         <% end %>
       <% end %>
     </div>
