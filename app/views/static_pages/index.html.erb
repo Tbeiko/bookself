@@ -17,9 +17,9 @@
     <h1 class='title'>Algorithms only go so far.</h1>
     <p class="paragraph">Explore freinds and inspirational people's bookshelves,</br>
     get personal recommendations and pass 'em on.</p>
-    <%= link_to "/explore" do %>
-      <p class="paragraph" id="explore">EXPLORE LIBRARIES  ></p>
-    <% end %>
+
+    <%= render 'static_pages/explore',:layout => 'landing' %>
+
     <img src="" id="book-row-landing"/>
   </section>
 

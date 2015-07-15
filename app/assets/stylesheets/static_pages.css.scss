@@ -99,10 +99,20 @@ h2 {
   }
 }
 
+.explore-list {
+  margin-top: 15px;
+  li {
+  vertical-align: middle;
+  line-height: 35px;
+  }
+}
+
 #explore {
   font-size: 23px;
   font-weight: bold;
-  color: #337ab7;
+  color: #4A90E2;
+  padding: 0;
+  margin: 0;
 }
 
 #book-row-landing {
