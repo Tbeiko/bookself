@@ -1,6 +1,6 @@
 <% if @searched_users.empty? %>
   <h4>Your search didn't return anyting.</br>Try using people's first or last names.</h4>
 <% else %>
-  <h4 class="text-center">RESULTS FOR "<%= params[:search] %>"</h4>
+  <h4 class="text-center" style='margin-bottom:50px;'>RESULTS FOR "<%= params[:search] %>"</h4>
   <%= render 'user_cards', users: @searched_users %>
 <% end %>

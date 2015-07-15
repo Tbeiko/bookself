@@ -127,6 +127,10 @@ a, a.deco-none {
   margin-top: 20px;
 }
 
+.custom-button:hover {
+  opacity: 0.5;
+}
+
 .background-photo {
   position: absolute;
   min-width: 100%;
@@ -146,8 +150,16 @@ a, a.deco-none {
   margin-top: 15px;
   margin-bottom: 5px;
 }
+
+.follow-button:hover {
+  opacity: 0.5;
+}
+
 .center-pills { 
   display: inline-block;
+  .active {
+    font-weight: bold;
+  }
 }
 
 .all-books {
