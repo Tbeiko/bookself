@@ -4,7 +4,7 @@ class BooksController < ApplicationController
   before_action :new, only: [:search]
 
   def search
-    # Amazon API
+    # Amazon API call
     search_term = params[:book_info]
     @books  = Amazon::Ecs.item_search(search_term, { :search_index => 'Books', :sort => 'relevancerank' })
     @covers = Amazon::Ecs.item_search(search_term, { :response_group => 'Images',

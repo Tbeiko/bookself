@@ -1,5 +1,8 @@
 class User <ActiveRecord::Base
   before_save :generate_slug
+
+  validates_presence_of :first_name, :last_name
+  validates :email, uniqueness: true  
   
   has_many :user_books
   has_many :books, through: :user_books
@@ -13,8 +16,7 @@ class User <ActiveRecord::Base
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
-  validates_presence_of :first_name, :last_name
-  validates :email, uniqueness: true
+
 
   has_attached_file :avatar, 
                     :styles => { :medium => "200x200>", :thumb => "100x100>" }, 
