@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   resources :books, only: [:create]
 
-  resources :users, except: [:index, :destroy] do  
+  resources :users, except: [:index, :new, :create, :destroy] do  
     member do
       resources :relationships, only: [:create, :destroy]
       get :following, :followers

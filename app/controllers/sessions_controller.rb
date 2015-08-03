@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  # Sessions are only for "fake users" at the moment. 
+  
   before_action :require_admin!, only: :new
 
   def new

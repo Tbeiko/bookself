@@ -55,9 +55,9 @@ class ApplicationController < ActionController::Base
 
   end
 
-    def sort_users_by_followers
-      @popular_users = User.all.sort_by {|user| user.followers.count}.reverse!
-    end
+  def sort_users_by_followers
+    User.all.sort_by {|user| user.followers.count}.reverse!
+  end
 
   def current_user_profile?
     if logged_in? && params[:id] == current_user.slug

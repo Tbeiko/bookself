@@ -1,4 +1,5 @@
 class IdentitiesController < ApplicationController
+  # This is only to create fake users. Will eventually be transformed into an email sign up
   before_action :require_admin!
 
   def new

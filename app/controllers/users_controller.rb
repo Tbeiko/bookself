@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :edit]
-  before_action :require_user, only: [:edit, :following, :followers]
-  before_action :sort_users_by_followers, only: [:index]
+  before_action :set_user, only: [:show, :update, :edit, :followers, :following]
+  before_action :require_user, only: [:edit, :update, :following, :followers]
 
   def index
+    @popular_users = sort_users_by_followers
     @searched_users = User.search(params[:search])
     render :layout => 'landing'
   end
@@ -27,14 +27,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def new
-    @user = User.new
-  end
-
-  def create
-    @user = User.create(user_params)
-  end
-
   def edit
     unless @user.provider == "identity"
       redirect_to root_path
@@ -42,18 +34,20 @@ class UsersController < ApplicationController
   end
 
   def update
-    unless @user.provider == "identity"
+    if @user.provider != "identity"
       redirect_to root_path
-    end
-    if @user.update(user_params)
+    elsif @user.provider == "identity"
+      @user.update(user_params)
       @user.image = "#{@user.avatar.url(:medium)}"
-      @user.save
+      @user.save!
       flash[:success] = "Your profile was updated successfully."
       redirect_to user_path
     else
       render :edit
     end
   end
+
+  # Need to move some logic out of the view and here instead.
 
   def following
     @title = "Following"
