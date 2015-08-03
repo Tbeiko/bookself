@@ -2,7 +2,7 @@
   <% if @user == current_user %>
     <p>You don't have any books here yet.</p>
     <p class='box-button center-block'>
-        <%= link_to "ADD YOUR FAVORITE BOOK", new_book_path %>
+        <%= link_to "ADD YOUR FAVORITE BOOK", add_a_book_path %>
     </p>
   <% else %>
     <h5><%= @user.first_name %> doesn't have any books here yet.</h5>

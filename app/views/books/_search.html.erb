@@ -1,6 +1,6 @@
 <h2>Search for your book</h2>
 
-<%= bootstrap_form_tag url: '/search', layout: :default do |f| %>
+<%= bootstrap_form_tag url: '/add-a-book', layout: :default do |f| %>
   <%= token_tag %>
   <%= f.text_field :book_info , label: "Book information" %>
   <%= f.submit "Search", class: 'btn btn-default' %>

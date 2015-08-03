@@ -1,28 +1,25 @@
 class BooksController < ApplicationController
   before_action :set_user
-  before_action :require_user, only: [:new, :create]
-  before_action :new, only: [:search]
+  before_action :require_user
 
-  def search
-    # Amazon API call
+  def new
+    @book = Book.new
     search_term = params[:book_info]
-    @books  = Amazon::Ecs.item_search(search_term, { :search_index => 'Books', :sort => 'relevancerank' })
+    @books  = Amazon::Ecs.item_search(search_term, { :search_index => 'Books', 
+                                                     :sort => 'relevancerank' })
     @covers = Amazon::Ecs.item_search(search_term, { :response_group => 'Images',
                                                      :search_index => 'Books',
                                                      :sort => 'relevancerank' })
     render :new
   end
 
-  def new
-    @book = Book.new
-  end
-
   def create
     @book = Book.find_by(amazon_link: params[:book][:amazon_link]) 
+
     if @book == nil
       @book = Book.new(book_params)
     end
-    
+
     @book.users << current_user
     @book.user_books.last.update_attributes!(status: params[:user_book][:status])
     @book.user_books.last.save

@@ -31,9 +31,6 @@ gem 'faker'
 # Paginate 
 gem 'will_paginate', '3.0.7'
 
-# Slugify Book and User Pages
-# gem 'slugable_tim_beiko'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 
@@ -88,9 +85,11 @@ group :development, :test do
   gem 'spring'
 
   gem 'rspec-rails', '~> 3.0'
+  gem 'fabrication'
 end
 
 group :test do
   gem 'shoulda-matchers'
+  gem 'database_cleaner'
 end
 

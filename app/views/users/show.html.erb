@@ -19,7 +19,7 @@
 
     <%= render 'following_form' if logged_in? %>
     <% if @user == current_user %>
-      <h5><%= link_to "ADD A BOOK", new_book_path %></h5>
+      <h5><%= link_to "ADD A BOOK", add_a_book_path %></h5>
     <% end %>
 
   </div>
