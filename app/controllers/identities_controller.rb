@@ -8,9 +8,10 @@ class IdentitiesController < ApplicationController
 
   def create
     @identity = Identity.new(identity_params)
-    if @identity.save!
+    if @identity.save
+      flash[:success] = "@identity.first_name was created!"
     else
-      redirect_to :back
+      redirect_to root_path
       flash[:danger] = "Something went wrong"
     end
   end

@@ -17,8 +17,8 @@ describe UsersController do
 
   describe "GET show" do
     let(:user)  { Fabricate(:user) }
+    let(:user2) { Fabricate(:user) }
     let(:book)  { Fabricate(:book) }
-    let(:user2) { Fabricate(:user) } 
 
     before do 
       user.follow(user2)
@@ -45,14 +45,51 @@ describe UsersController do
         expect(assigns(:books)).to eq([book])
       end
 
-      it "shows a user's following when tab is set to 'following' " do 
-        get :show, id: user.slug, tab: 'following'
-        expect(assigns(:following)).to eq([user2])
-      end
+      context "follower or following tab" do 
+        let(:user3)     { Fabricate(:user) }
 
-      it "shows a user's followers when the tab is set to 'followers' " do 
-        get :show, id: user.slug, tab: 'followers'
-        expect(assigns(:followers)).to eq([user2])
+        before do 
+          user.follow(user3)
+          user3.follow(user)
+          user2.follow(user3)
+          user.books  << book
+          user2.books << book
+        end
+
+        it "shows a user's following when tab is set to 'following' " do 
+          get :show, id: user.slug, tab: 'following'
+          expect(assigns(:following)).to eq([user3, user2])
+        end
+
+        it "sorts the user's following by number of same books if logged_in" do 
+          session[:user_id] = user.id
+          get :show, id: user.slug, tab: 'following'
+          expect(assigns(:following)).to eq([user2, user3])
+        end
+
+        it "sorts the user's following by number of followers if not logged in" do 
+          session[:user_id] = nil 
+          get :show, id: user.slug, tab: 'following'
+          expect(assigns(:following)).to eq([user3, user2])
+        end
+
+        it "shows a user's followers when the tab is set to 'followers' " do 
+          get :show, id: user.slug, tab: 'followers'
+          expect(assigns(:followers)).to eq([user3, user2])
+        end
+
+        it "sorts the user's followers by number of same books if logged_in" do 
+          session[:user_id] = user.id
+          get :show, id: user.slug, tab: 'followers'
+          expect(assigns(:followers)).to eq([user2, user3])
+        end
+
+        it "sorts the user's followers by number of followers if not logged in" do 
+          session[:user_id] = nil 
+          get :show, id: user.slug, tab: 'followers'
+          expect(assigns(:followers)).to eq([user3, user2])
+        end
+
       end
 
       it "shows a user's read books when the tab is not set" do 
@@ -120,27 +157,4 @@ describe UsersController do
       end
     end
   end
-
-  # Too much of the logic is in the views right now
-
-  describe "GET following" do 
-    let(:user)      { Fabricate(:user) }
-    let(:user2)     { Fabricate(:user) }
-    let(:book)      { Fabricate(:book) }
-    let(:user_book) { Fabricate(:user_book, user_id: user.id, book_id: book.id) }
-    let(:user_book) { Fabricate(:user_book, user_id: user2.id, book_id: book.id) }
-
-    before do 
-      user.follow(user2)
-      user2.follow(user)
-    end
-
-    # it "sets the @following variable by number of common books if logged in" 
-    # it "sets the @following variable by number of followers if not logged in"
-  end
-
-  # Too much of the logic is in the views right now
-
-  describe "GET followers"
-
 end

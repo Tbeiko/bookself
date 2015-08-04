@@ -2,7 +2,38 @@ require 'spec_helper'
 
 describe IdentitiesController do 
   context "as admin user" do 
-    # Not sure how to test this
+    describe "GET new" do 
+      # Not sure how to test this, because it is linked with the sessions controller
+    end
+
+    describe "POST create" do 
+      context "with valid input" do 
+        let(:identity) { Fabricate(:identity) }
+        it "creates a new identity instance" do 
+          post :create, identity: identity
+          expect(Identity.count).to eq(1)
+        end
+      end
+
+      context "with invalid input" do 
+        it "does not create a new identity instance" do 
+          post :create, identity: { id: 1, password: "1234" }
+          expect(Identity.count).to eq(0)
+        end
+
+        it "redirects to root_path" do 
+          post :create, identity: { id: 1, password: "1234" }
+          expect(response).to redirect_to root_path
+        end
+
+        # This one does not pass.
+        it "fills the danger notice" do 
+          post :create, identity: { id: 1, password: "1234" }
+          expect(flash[:danger]).not_to be_blank
+        end
+      end
+
+    end
   end
 
   context "as non-admin user" do 

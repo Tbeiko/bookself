@@ -28,7 +28,8 @@ describe UserBooksController do
       end
 
       it "sets the notice if the book is added" do 
-        # This method still needs some work. Will TDD it.
+        post :create, user_book: { user_id: user.id, book_id: book.id }
+        expect(flash[:success]).not_to be_blank
       end
 
       it "redirects back to where the user came from" do 

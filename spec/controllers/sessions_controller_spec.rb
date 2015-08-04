@@ -16,7 +16,9 @@ describe SessionsController do
   end
 
   describe "POST create" do 
-    # Not sure how to test this one
+    it "should set the session[:user_id]" do 
+      # Not sure how to test this with omniauth
+    end
   end
 
   describe "GET destroy" do 
