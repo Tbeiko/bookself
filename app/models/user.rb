@@ -7,9 +7,9 @@ class User <ActiveRecord::Base
   has_many :user_books
   has_many :books, through: :user_books
 
-  has_many :active_relationships, class_name:  "Relationship",
-                                  foreign_key: "follower_id",
-                                  dependent:   :destroy
+  has_many :active_relationships,  class_name:  "Relationship",
+                                   foreign_key: "follower_id",
+                                   dependent:   :destroy
   has_many :passive_relationships, class_name:  "Relationship",
                                    foreign_key: "followed_id",
                                    dependent:   :destroy
@@ -28,24 +28,25 @@ class User <ActiveRecord::Base
                     :storage => :s3,
                     :s3_credentials => {:bucket => "bookself-avatars", :access_key_id => ENV['AWS_ACCESS_KEY_ID'], :secret_access_key => ENV['AWS_SECRET_KEY']}
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
-  validates_attachment_content_type :cover, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_content_type :cover,  :content_type => /\Aimage\/.*\Z/
   
+  # Creating users through Omniauth
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
+      user.provider   = auth.provider
+      user.uid        = auth.uid
       user.first_name = auth.info.first_name
-      user.last_name = auth.info.last_name
-      user.email = auth.info.email
+      user.last_name  = auth.info.last_name
+      user.email      = auth.info.email
       if auth.provider == "facebook"
-        user.image = auth.info.image + "?type=large"
-        user.token = auth.credentials.token
+        user.image      = auth.info.image + "?type=large"
+        user.token      = auth.credentials.token
         user.expires_at = Time.at(auth.credentials.expires_at)
       end
       user.random_color
       user.save!
     end
-    # This is here so that the "provider" is not taken into account when seraching for users.
+    # This is here so that the "provider" is not taken into account when seraching for users in 'generate_slug'.
     # This way, users from different providers will not have the same slug.
     u = User.last
     u.generate_slug
@@ -53,6 +54,7 @@ class User <ActiveRecord::Base
     return User.where(provider: auth.provider, uid: auth.uid).first
   end
 
+  # Followers / Following methods
   def follow(other_user)
     active_relationships.create(followed_id: other_user.id)
   end
@@ -65,6 +67,7 @@ class User <ActiveRecord::Base
     following.include?(other_user)
   end
 
+  # Methods to compare users amongst themselves
   def self.search(search)
     if search == ""
     elsif search
@@ -91,18 +94,19 @@ class User <ActiveRecord::Base
     return same_books_total
   end
 
+  # Slug-related methods
   def to_param
     self.slug
   end
 
   def generate_slug
     the_slug = to_slug(self.first_name.to_s + self.last_name.to_s)
-    object = User.find_by slug: the_slug
-    count = 2
+    object   = User.find_by slug: the_slug
+    count    = 2
       while object && object !=self
         the_slug = append_suffix(the_slug, count)
-        object = self.class.find_by slug: the_slug
-        count += 1 
+        object   = self.class.find_by slug: the_slug
+        count    += 1 
       end
     self.slug = the_slug.downcase
   end
@@ -123,7 +127,20 @@ class User <ActiveRecord::Base
     str.downcase
   end
 
+  # Methods regarding the user's color or cover
   def random_color
     self.color = ["#80b891", "#f89f81", "#586576", "#f0d2a8"].sample
+  end
+
+  def has_no_color
+    self.color.nil?
+  end
+
+  def has_no_cover
+    self.cover.url.empty?
+  end
+
+  def has_no_color_or_cover
+    self.color.nil? || self.cover.url.empty?
   end
 end

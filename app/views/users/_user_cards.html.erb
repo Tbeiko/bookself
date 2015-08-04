@@ -1,17 +1,17 @@
 <section class='follower-card-container' >
-  <% if (users.empty? || users.nil?) %>
-    <%= render 'empty_follow', tab: params[:tab] %>
+  <% if users.nil? || users.empty? %>
+    <%= render 'users/empty_follow', tab: params[:tab] %>
   <% else %>
+
     <% users.each do |user| %>
 
       <div class='col-sm-4 col-xs-12 follower-card'>
         <%= link_to user_path(user) do %>
 
-
           <div id='color'>
-          <% if user.cover.url.empty? && !user.color.nil? %>
+          <% if user.has_no_cover && !user.has_no_color %>
             <div style="background-color:<%= user.color %>; height:100px;"></div>
-          <% elsif user.cover.url.empty? && user.color.nil? %>
+          <% elsif user.has_no_color_or_cover %>
             <div style="background-color:<%= random_color %>; height:100px;"></div>
           <% else %>
             <img class='img-responsive' id='card-image' src="<%= user.cover(:small) %>"/>
@@ -27,9 +27,7 @@
               <li><h6><%= user.followers.count %> followers</h6></li>
             </ul>
 
-
-            <div class='card-books'>
-              
+            <div class='card-books'>    
               <% if user.books.empty? %>
                 <% 4.times do %>
                   <div class='col-xs-3 book-row'>
@@ -46,17 +44,15 @@
 
               <% else %>
                 <%= user.books[1..4].each do |book|%>
-                <div class='col-xs-3 book-row'>
-                  <img class='img-responsive' src="<%= book.cover_image_link %>"/>
-                </div>
+                  <div class='col-xs-3 book-row'>
+                    <img class='img-responsive' src="<%= book.cover_image_link %>"/>
+                  </div>
                 <% end %>
               <% end %>
             </div>
           </div>
-          
         <% end %>
       </div>
-
     <% end %>
   <% end %>
 </section>

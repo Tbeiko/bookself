@@ -8,36 +8,31 @@
     </div>
 
     <h3><%= @user.first_name%> <%=@user.last_name%> </h3>
-
     <h5><%= @user.description unless @user.description.nil? %></h5>
-
     <% unless @user == current_user %>
       <%= link_to "#{book_count(@user)}", user_path(@user, tab: 'books') %>
     <% end %>
-
     <%= link_to "#{@user.followers.count} followers", user_path(@user, tab: 'followers') %>
-
     <%= render 'following_form' if logged_in? %>
     <% if @user == current_user %>
       <h5><%= link_to "ADD A BOOK", add_a_book_path %></h5>
     <% end %>
-
   </div>
-
 
 <div class="text-center">
   <ul class='center-pills list-inline'>
       <li class='<%= 'active' if params[:tab].nil? %> tab'>
         <%= link_to "BOOKSHELF", user_path(@user) %>
       </li>
-      <% unless @user.provider == 'identity' %>
-        <li class='<%= 'active' if params[:tab] == 'to-read' %> tab'>
-          <%= link_to "TO READ", user_path(@user, tab: 'to-read') %>
-        </li>  
-        <li class='<%= 'active' if params[:tab] == 'following' %> tab'>
-          <%= link_to "FOLLOWING (#{@user.following.count})", user_path(@user, tab: 'following') %>
-        </li>  
-      <% end %>
+      
+    <% unless @user.provider == 'identity' %>
+      <li class='<%= 'active' if params[:tab] == 'to-read' %> tab'>
+        <%= link_to "TO READ", user_path(@user, tab: 'to-read') %>
+      </li>  
+      <li class='<%= 'active' if params[:tab] == 'following' %> tab'>
+        <%= link_to "FOLLOWING (#{@user.following.count})", user_path(@user, tab: 'following') %>
+      </li>  
+    <% end %>
   </ul>
 </div>
 
