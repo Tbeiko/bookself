@@ -24,7 +24,7 @@ class BooksController < ApplicationController
 
     if @book.save
       redirect_to user_path(current_user)
-      flash[:success] = "#{@book.title} was added to your bookself."
+      flash[:success] = "#{@book.title} was added to your bookshelf."
     else
       flash[:danger] = "Something went wrong, please try again."
       render :new

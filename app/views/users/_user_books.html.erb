@@ -21,7 +21,7 @@
 
               <% unless current_user_profile? && book.has_been_read_by?(current_user) %>
                 <%= link_to read_path(user_book: {book_id: book.id, user_id: current_user.id, status: "read"}), method: :post do %>
-                  <ul class='list-inline hover-book-item'>
+                  <ul class='list-inline hover-book-item' id='read'>
                     <li class="hover-book-item"><img class='icon' src='/assets/images/icons/hover_tobookshelf.png'/></li>
                     <li class="hover-book-item"><h5 class='hover-text'>Add to bookshelf</h5></li>
                   </ul>
@@ -30,7 +30,7 @@
 
               <% unless current_user_profile? && book.is_in_reading_list_of?(current_user) %>
                 <%= link_to read_path(user_book: {book_id: book.id, user_id: current_user.id, status: "to-read"}), method: :post do %>
-                  <ul class='list-inline'>
+                  <ul class='list-inline' id='to-read'>
                     <li class="hover-book-item"><img class='icon' src='/assets/images/icons/hover_toread.png'/></li>
                     <li class="hover-book-item"><h5 class='hover-text' >Reading list</h5></li>
                   </ul>
@@ -39,7 +39,7 @@
 
               <% if current_user_profile? %>
                 <%= link_to delete_book_path(user_book: {book_id: book.id, user_id: current_user.id}), method: :post do %>
-                  <ul class='list-inline'>
+                  <ul class='list-inline' id='remove'>
                     <li class="hover-book-item"><img class='icon' src='/assets/images/icons/hover_remove.png'/></li>
                     <li class="hover-book-item"><h5 class='hover-text' >Remove book</h5></li>
                   </ul>
@@ -48,7 +48,7 @@
             <% end %>
 
             <%= link_to book.amazon_link do %>
-              <ul class='list-inline'>
+              <ul class='list-inline' id='buy'>
                 <li class="hover-book-item"><img class='icon' src='/assets/images/icons/hover_buy.png'/></li>
                 <li class="hover-book-item"><h5 class='hover-text' >Buy this book</h5></li>
               </ul>

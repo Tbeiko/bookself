@@ -4,13 +4,13 @@
 
 <% unless params[:book_info].nil? %>
 
-  <h3>Choose your book </h3>
+<h3>Choose your book </h3>
 
 <div class='all-books' >
     <% @books.items.each_with_index do |book, n| %>
     <% unless bad_image?(n) %>
       <div class='col-md-2 col-sm-3 col-xs-4 book-row'>
-        <div class='' >
+        <div class='' id='book_<%= n %>'>
           <%= form_for @book do |f| %>
             <% item_attributes = book.get_element('ItemAttributes') %>
               <input name="book[title]" type="hidden" value="<%= item_attributes.get('Title') %>"/>
