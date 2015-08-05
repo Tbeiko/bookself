@@ -16,8 +16,13 @@ describe SessionsController do
   end
 
   describe "POST create" do 
-    it "should set the session[:user_id]" do 
-      # Not sure how to test this with omniauth
+    before do
+      request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:facebook]
+    end
+    it "should create a user" do 
+      expect {
+        post :create, provider: :facebook, auth: OmniAuth.config.mock_auth[:facebook]
+      }.to change{ User.count }.by(1)
     end
   end
 
@@ -29,6 +34,7 @@ describe SessionsController do
     it "clears the session for the user" do 
       expect(session[:user_id]).to be_nil
     end
+
     it "redirects to the root path" do 
       expect(response).to redirect_to root_path
     end
