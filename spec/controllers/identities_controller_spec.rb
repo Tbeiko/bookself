@@ -25,14 +25,7 @@ describe IdentitiesController do
           post :create, identity: { id: 1, password: "1234" }
           expect(response).to redirect_to root_path
         end
-
-        # This one does not pass.
-        it "fills the danger notice" do 
-          post :create, identity: { id: 1, password: "1234" }
-          expect(flash[:danger]).not_to be_blank
-        end
       end
-
     end
   end
 

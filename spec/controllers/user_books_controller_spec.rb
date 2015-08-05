@@ -27,8 +27,8 @@ describe UserBooksController do
         expect(UserBook.count).to eq(1)
       end
 
-      it "sets the notice if the book is added" do 
-        post :create, user_book: { user_id: user.id, book_id: book.id }
+      it "sets the success notice if the book is added" do 
+        post :create, user_book: { user_id: user.id, book_id: book.id, status: "read" }
         expect(flash[:success]).not_to be_blank
       end
 

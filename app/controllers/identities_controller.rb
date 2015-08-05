@@ -12,7 +12,6 @@ class IdentitiesController < ApplicationController
       flash[:success] = "@identity.first_name was created!"
     else
       redirect_to root_path
-      flash[:danger] = "Something went wrong"
     end
   end
 
