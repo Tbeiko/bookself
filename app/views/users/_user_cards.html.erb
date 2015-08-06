@@ -9,12 +9,12 @@
         <%= link_to user_path(user) do %>
 
           <div id='color'>
-          <% if user.has_no_cover && !user.has_no_color %>
-            <div style="background-color:<%= user.color %>; height:100px;"></div>
-          <% elsif user.has_no_color_or_cover %>
-            <div style="background-color:<%= random_color %>; height:100px;"></div>
-          <% else %>
+          <% if user.cover.url.present? %>
             <img class='img-responsive' id='card-image' src="<%= user.cover(:small) %>"/>
+          <% elsif user.color.present? %>
+            <div style="background-color:<%= user.color %>; height:100px;"></div>
+          <% else %>
+            <div style="background-color:<%= random_color %>; height:100px;"></div>
           <% end %>
           </div>
 

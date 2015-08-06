@@ -1,10 +1,11 @@
 <div class="container-fluid">
-  <% if @user.nil? || @user.has_no_color_or_cover %>
-    <div class='background-photo'  style="background-color:<%= random_color %>;"></div>
-  <% elsif @user.has_no_cover && !@user.has_no_color %>
+  <% if @user.cover.url.present? %>
+    <img class='img-responsive background-photo' src="<%= @user.cover(:original) %>"/>
+  <% elsif @user.color.present? %>
     <div class='background-photo'  style="background-color:<%= @user.color %>;"></div>
   <% else %>
-    <img class='img-responsive background-photo' src="<%= @user.cover(:original) %>"/>
+    <div class='background-photo'  style="background-color:<%= random_color %>;"></div>
   <% end %>
 </div>
+
 
