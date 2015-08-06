@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
-  before_action :sort_users_by_followers, only: :index
   def index
+    @popular_users = sort_users_by_followers
     render :layout => 'landing'
   end
 end
