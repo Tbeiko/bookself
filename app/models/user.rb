@@ -131,17 +131,4 @@ class User <ActiveRecord::Base
   def random_color
     self.color = ["#80b891", "#f89f81", "#586576", "#f0d2a8"].sample
   end
-
-  # Will be removed if latest commit works in production
-  # def has_no_color
-  #   self.color.nil?
-  # end
-
-  # def has_no_cover
-  #   self.cover.url.empty?
-  # end
-
-  # def has_no_color_or_cover
-  #   self.color.nil? || self.cover.url.empty?
-  # end
 end
