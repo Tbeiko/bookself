@@ -23,7 +23,8 @@ class UserBooksController < ApplicationController
     if current_user_profile?
       book      = Book.find_by(id: params[:user_book][:book_id])
       user_book = UserBook.find_by(user_book_params)
-      user_book.destroy
+      user_book.destroy unless user_book.nil?
+      
       if !current_user.user_books.include?(user_book)
         flash[:success] = "#{book.title} was successfully removed from your profile."
       else
