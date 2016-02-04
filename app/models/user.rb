@@ -1,12 +1,10 @@
 class User <ActiveRecord::Base
-  before_save :generate_slug
-
   validates_presence_of :first_name, :last_name
   validates :email, uniqueness: true  
+  before_save :generate_slug
   
   has_many :user_books
   has_many :books, through: :user_books
-
   has_many :active_relationships,  class_name:  "Relationship",
                                    foreign_key: "follower_id",
                                    dependent:   :destroy
@@ -16,8 +14,6 @@ class User <ActiveRecord::Base
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
-
-
   has_attached_file :avatar, 
                     :styles => { :medium => "200x200>", :thumb => "100x100>" }, 
                     :default_url => ""
@@ -26,7 +22,10 @@ class User <ActiveRecord::Base
                     :default_url => ""
   has_attached_file :download,
                     :storage => :s3,
-                    :s3_credentials => {:bucket => "bookself-avatars", :access_key_id => ENV['AWS_ACCESS_KEY_ID'], :secret_access_key => ENV['AWS_SECRET_KEY']}
+                    :s3_credentials => {:bucket => "bookself-avatars", 
+                                        :access_key_id => ENV['AWS_ACCESS_KEY_ID'], 
+                                        :secret_access_key => ENV['AWS_SECRET_KEY']}
+
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   validates_attachment_content_type :cover,  :content_type => /\Aimage\/.*\Z/
   
