@@ -10,7 +10,7 @@ function showBookOption() {
     $(this).children('.book-options').fadeIn(10);
     $(this).children('.profile-book').css("opacity", 0.2)
     $('.book-options').position({
-      // +15 on the left is because of padding included with bootstrap
+      // +25 on the left is because of padding included with bootstrap (10 padding + 15 to match top)
       my: "left+25 top+15",
       at: "left top",
       of: $(this)

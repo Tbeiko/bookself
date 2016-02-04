@@ -19,7 +19,7 @@
 //= require turbolinks
 
 $(function() {
-  $("#users th a, #users .pagination a").live("click", function() {
+  $("#users th a, #users .pagination a").on("click", function() {
     $.getScript(this.href);
     return false;
   });
