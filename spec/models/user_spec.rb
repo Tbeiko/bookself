@@ -91,7 +91,6 @@ describe User do
   end
 
   describe "random_color" do 
-    # Should I test this one?
   end
 end
 

@@ -2,7 +2,8 @@
   <% if users.nil? || users.empty? %>
     <%= render 'users/empty_follow', tab: params[:tab] %>
   <% else %>
-     <!-- Clearly this will break once we have more than a couple users. -->
+  
+    <!-- Clearly this will break once we have more than a couple users. -->
     <% users.each do |user| %>
 
       <div class='col-sm-4 col-xs-12 follower-card'>
