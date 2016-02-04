@@ -252,6 +252,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport
   amazon-ecs
   aws-sdk (~> 1.6)
   bcrypt-ruby (~> 3.1.2)

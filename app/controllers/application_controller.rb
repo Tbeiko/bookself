@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include ActionView::Helpers::TextHelper
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :null_session
@@ -44,19 +45,11 @@ class ApplicationController < ActionController::Base
 
   def book_count(user)
     if logged_in?
-      books = current_user.number_of_same_books(user)
-      if books == 1
-        return "#{books} book in common"
-      else
-        return "#{books} books in common"
-      end
+      count = current_user.number_of_same_books(user)
+      return "#{pluralize(count, 'book')} in common"
     else
-      books = user.books.count
-      if books == 1
-        return "#{books} book"
-      else
-        return "#{books} books"
-      end
+      count = user.books.count
+      return "#{pluralize(count, 'book')}"
     end
   end
 
