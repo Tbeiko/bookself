@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :edit, :followers, :following]
+  before_action :set_user,     only: [:show, :update, :edit, :followers, :following]
   before_action :require_user, only: [:edit, :update, :following, :followers]
 
   def index

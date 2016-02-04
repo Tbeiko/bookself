@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_admin!
-    unless current_user && ((current_user.email == "t.beiko@live.ca") || (current_user.email == "catherinelgrs@gmail.com") )
+    unless current_user && ((current_user.email == ENV["ADMIN1_EMAIL"]) || (current_user.email == ENV["ADMIN2_EMAIL"]) )
       redirect_to root_path
     end
   end

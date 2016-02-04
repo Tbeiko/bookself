@@ -1,6 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_user
-  before_action :require_user
+  before_action :set_user, :require_user
 
   def new
     @book = Book.new
@@ -16,6 +15,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.find_by(amazon_link: params[:book][:amazon_link]) 
 
+    # If no one has ever added that book, we create a new one from Amazon's information
     if @book.nil?
       @book = Book.new(book_params)
     end

@@ -1,7 +1,7 @@
 <div class="container-fluid">
-  <% if @user.cover.url.present? %>
+  <% if !@user.nil? && @user.cover.url.present? %>
     <img class='img-responsive background-photo' src="<%= @user.cover(:original) %>"/>
-  <% elsif @user.color.present? %>
+  <% elsif !@user.nil? && @user.color.present? %>
     <div class='background-photo'  style="background-color:<%= @user.color %>;"></div>
   <% else %>
     <div class='background-photo'  style="background-color:<%= random_color %>;"></div>

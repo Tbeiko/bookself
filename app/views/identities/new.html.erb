@@ -1,6 +1,7 @@
 <div class='container' style='margin-top: 150px;margin-bottom:150px;'>
 <h1>Create a new user</h1>
 
+<!-- Need to add a field to upload a picture for the user -->
 <%= bootstrap_form_tag url: "/auth/identity/register" do |f| %>
   <% if @identity && @identity.errors.any? %>
       <%= f.alert_message "Please fix the errors below." %>
