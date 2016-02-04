@@ -3,7 +3,7 @@ class IdentitiesController < ApplicationController
   before_action :require_admin!
 
   def new
-    @identity = env['omniauth.identity']
+    @identity = ENV['omniauth.identity']
   end
 
   def create
