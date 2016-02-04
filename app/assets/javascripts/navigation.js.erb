@@ -1,18 +1,15 @@
 // This is for the application.
 
 $(document).on("scroll", function(){
-  if
-      ($(document).scrollTop() > $(".background-photo").height() ){
-        $("#header").addClass("shrink");
-        $("#header").removeClass("white");
-        $("#header").addClass("black");
-        $("#header").css("background", "white");
-        $("#header").css("cursor", "pointer");
-        $("#header").css("box-shadow", "0 0px 5px rgba(0, 0, 0, 0.5)");
-        click_to_show_header();
-  }
-  else
-  {
+  if ($(document).scrollTop() > $(".background-photo").height() ){
+    $("#header").addClass("shrink");
+    $("#header").removeClass("white");
+    $("#header").addClass("black");
+    $("#header").css("background", "white");
+    $("#header").css("cursor", "pointer");
+    $("#header").css("box-shadow", "0 0px 5px rgba(0, 0, 0, 0.5)");
+    click_to_show_header();
+  } else {
     $("#header").removeClass("shrink");
     $("#header").removeClass("black");
     $("#header").addClass("white");
@@ -32,18 +29,15 @@ function click_to_show_header() {
 // This is only for the home page 
 
 $(document).on("scroll", function(){
-  if
-      ($(document).scrollTop() > $(".big-photo").height() ){
-      $("#header-home").addClass("shrink");
-      $("#header-home").addClass("black");
-      $("#header-home").removeClass("white");
-      $("#header-home").css("background", "white");
-      $("#header-home").css("cursor", "pointer");
-      $("#header-home").css("box-shadow", "0 0px 5px rgba(0, 0, 0, 0.5)");
-      click_to_show_home_header();
-  }
-  else
-  {
+  if ($(document).scrollTop() > $(".big-photo").height() ){
+    $("#header-home").addClass("shrink");
+    $("#header-home").addClass("black");
+    $("#header-home").removeClass("white");
+    $("#header-home").css("background", "white");
+    $("#header-home").css("cursor", "pointer");
+    $("#header-home").css("box-shadow", "0 0px 5px rgba(0, 0, 0, 0.5)");
+    click_to_show_home_header();
+  } else {
     $("#header-home").removeClass("shrink");
     $("#header-home").addClass("white");
     $("#header-home").removeClass("black");
